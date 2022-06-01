@@ -1,3 +1,36 @@
-.button {
-  background-color: var(--color-emphasis);
+.base {
+	background-color: white;
+	padding: 1rem 2rem;
+	border: 0;
+	box-shadow: var(--base-shadow);
+	cursor: pointer;
+	transition: background.2s ease, color.2s ease, box-shadow.2s ease;
+	border-radius: 0.8rem;
+	color: black;
+	font-size: 1rem;
+}
+
+.base:hover {
+	box-shadow: var(--hover-shadow);
+}
+
+.buttonPrimary {
+	color: white;
+	background-color: var(--color-emphasis);
+}
+
+.buttonPrimary:hover {
+	background-color: var(--color-emphasis-hover);
+}
+
+.buttonSecondary {
+	background-color: black;
+	color: white;
+	outline: 2px black solid;
+	border-radius: 50px;
+}
+
+.buttonSecondary:hover {
+	background-color: white;
+	color: black;
 }
