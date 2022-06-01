@@ -4,11 +4,14 @@
   "description": "Fetching from many APIs app",
   "main": "index.js",
   "scripts": {
-    "start": "parcel src/index.html"
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html --dist-dir dist --public-url . --no-source-maps",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "author": "Purple Black",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.27.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router": "^5.3.3",
