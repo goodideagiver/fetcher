@@ -7,8 +7,19 @@
 
 .title {
 	font-size: 2rem;
+	animation: fadeIn 1s both;
 }
 
 .title span {
 	color: var(--color-emphasis);
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	to {
+		opacity: 1;
+	}
 }
