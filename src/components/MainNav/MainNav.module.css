@@ -1,0 +1,14 @@
+.header {
+	padding: 1rem 0;
+	display: grid;
+	place-items: center;
+	backdrop-filter: blur(15px);
+}
+
+.title {
+	font-size: 2rem;
+}
+
+.title span {
+	color: var(--color-emphasis);
+}
