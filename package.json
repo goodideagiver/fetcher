@@ -1,0 +1,22 @@
+{
+  "name": "fetcher",
+  "version": "0.0.1",
+  "description": "Fetching from many APIs app",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel src/index.html"
+  },
+  "author": "Purple Black",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-router": "^5.3.3",
+    "react-router-dom": "^5.3.3"
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0",
+    "parcel": "^2.6.0",
+    "process": "^0.11.10"
+  }
+}
