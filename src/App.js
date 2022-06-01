@@ -1,14 +1,14 @@
 import './assets/css/index.css';
 
-// import Button from './components/ui/Button/Button';
+import Button from './components/ui/Button/Button';
 
-const App = (props) => {
+const App = () => {
 	return (
 		<div>
-      <button>Siema z buttona</button>
-			{/* <Button primary>Important button</Button>
+			<button>Siema z buttona</button>
+			<Button primary>Important button</Button>
 			<Button>Normal button</Button>
-			<Button secondary>Not important button</Button> */}
+			<Button secondary>Not important button</Button>
 		</div>
 	);
 };
