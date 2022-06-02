@@ -21,6 +21,8 @@
   border-radius: 1rem;
   box-shadow: var(--base-shadow);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .actions {
@@ -38,11 +40,14 @@
   white-space: nowrap;
 }
 
+.info {
+  overflow: hidden;
+}
+
 .desc {
   border-radius: 0.5rem;
   margin-top: 1rem;
   border: 2px lightgray solid;
-
 }
 
 .desc h3 {
