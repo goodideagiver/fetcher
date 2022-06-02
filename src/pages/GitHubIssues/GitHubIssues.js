@@ -43,7 +43,7 @@ const GitHubIssues = () => {
 			<header>
 				<IssueForm />
 			</header>
-			<Issues data={formattedIssues} />
+			<Issues issuesList={formattedIssues} />
 		</div>
 	);
 };

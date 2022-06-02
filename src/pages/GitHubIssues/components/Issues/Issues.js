@@ -1,11 +1,11 @@
 import Issue from './Issue/Issue';
 
-const Issues = ({ data }) => {
-	if (!data) {
+const Issues = ({ issuesList }) => {
+	if (!issuesList) {
 		return <div>No issues to display</div>;
 	}
 
-	return data.map((issue) => {
+	return issuesList.map((issue) => {
 		return <Issue key={issue.id} {...issue} />;
 	});
 };
