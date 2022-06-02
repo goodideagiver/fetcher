@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react';
 
+import InfiniteScroll from 'react-infinite-scroll-component';
 import IssueForm from './components/IssueForm';
 import Issues from './components/Issues/Issues';
 import axios from 'axios';
 
+const newPageNumberIncrement = 1;
+const initialPageNumber = 1;
+
 const GitHubIssues = () => {
 	const [issuesData, setIssuesData] = useState(null);
+	const [page, setPage] = useState(initialPageNumber);
 
 	let formattedIssues = null;
 
@@ -22,6 +27,16 @@ const GitHubIssues = () => {
 			getIssues();
 		}
 	}, []);
+
+	const getNextPage = async () => {
+		setPage(page + newPageNumberIncrement);
+
+		const data = await axios.get(
+			`https://api.github.com/repos/facebook/react/issues?page=1&per_page=5`
+		);
+
+		setIssuesData(data.data);
+	};
 
 	if (issuesData) {
 		formattedIssues = issuesData.map((issue) => {
@@ -42,7 +57,16 @@ const GitHubIssues = () => {
 			<header>
 				<IssueForm />
 			</header>
-			<Issues issuesList={formattedIssues} />
+			{formattedIssues && (
+				<InfiniteScroll
+					next={'feed me more'}
+					dataLength={issuesData.length}
+					hasMore={true}
+					loader={<h4>Loading...</h4>}
+				>
+					<Issues issuesList={formattedIssues} />
+				</InfiniteScroll>
+			)}
 		</div>
 	);
 };
