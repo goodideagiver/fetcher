@@ -1,0 +1,26 @@
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: var(--modal-bg-index);
+}
+
+.content {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: var(--base-shadow);
+  display: flex;
+  flex-direction: column;
+  left: 50%;
+  max-height: 95%;
+  max-width: 1000px;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 95%;
+  z-index: var(--modal-content-index);
+}

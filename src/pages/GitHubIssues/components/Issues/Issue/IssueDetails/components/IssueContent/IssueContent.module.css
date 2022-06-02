@@ -1,0 +1,63 @@
+.desc {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  border: 2px lightgray solid;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.desc h3 {
+  background-color: lightgray;
+}
+
+.desc>p,
+.desc>h3 {
+  padding: 0.5rem;
+}
+
+.desc>div {
+  overflow-y: auto;
+}
+
+.info {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+
+
+.md h2 {
+  margin-top: 2rem;
+  padding: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.md h3 {
+  margin-top: 2rem;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.md p {
+  padding-left: 1rem;
+
+}
+
+.md code {
+  border-radius: 5px;
+  padding: 5px;
+  white-space: pre-wrap;
+  color: blue;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+
+.md ul,
+.md ol {
+  padding-left: 2rem;
+}

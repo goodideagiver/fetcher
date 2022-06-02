@@ -1,5 +1,4 @@
-import Button from './../../../../../components/ui/Button/Button';
-import IssueDetails from './IssueDetails';
+import IssueDetails from './IssueDetails/IssueDetails';
 import IssueHeader from './IssueHeader';
 import styles from './Issue.module.css';
 import { useState } from 'react';

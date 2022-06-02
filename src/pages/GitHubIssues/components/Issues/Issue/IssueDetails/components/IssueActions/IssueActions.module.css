@@ -1,0 +1,14 @@
+.actions {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-top: 2rem;
+	padding: 1rem;
+	gap: 1rem;
+}
+
+.actions > * {
+	flex: 1 1 100px;
+	overflow: hidden;
+	white-space: nowrap;
+}

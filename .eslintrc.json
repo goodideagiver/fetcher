@@ -20,6 +20,7 @@
 		"no-nested-ternary": "error",
 		"eqeqeq": "error",
 		"react/no-array-index-key": "error",
-        "react/jsx-handler-names": "error"
+		"react/jsx-handler-names": "error",
+		"react/jsx-max-depth": ["error", { "max": 3 }]
 	}
 }
