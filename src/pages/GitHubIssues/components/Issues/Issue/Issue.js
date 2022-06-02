@@ -13,14 +13,9 @@ const Issue = ({ title, issueNumber, dateCreated, description, isOpen }) => {
 
 	return (
 		<>
-			<article>
+			<article onClick={toggleDetails} className={styles.issue}>
 				<IssueHeader title={title} issueNumber={issueNumber} isOpen={isOpen} />
-				<p>Created: {formattedDate}</p>
-				<p>{description}</p>
-				<p>This issue is {isOpen ? 'Open' : 'Closed'}</p>
-				<Button onClick={toggleDetails} primary={true}>
-					Details
-				</Button>
+				<p className={styles.issueDate}>Created: {formattedDate}</p>
 			</article>
 			{detailsOpen && (
 				<IssueDetails

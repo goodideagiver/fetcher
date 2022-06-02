@@ -1,9 +1,20 @@
-.header {
+.issue {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--base-shadow);
+  cursor: pointer;
+  border: 2px lightgray solid;
+  transition: 0.2s;
+}
+
+.issue:hover {
+  border: 2px gray solid;
+  box-shadow: var(--hover-shadow);
+}
+
+.issueDate {
   padding: 1rem;
-  justify-content: space-between;
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  margin-bottom: 1rem;
-  background-color: lightgray;
 }

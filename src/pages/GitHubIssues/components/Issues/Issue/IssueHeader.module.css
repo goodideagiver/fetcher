@@ -8,8 +8,16 @@
   background-color: lightgray;
 }
 
+.header h2 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 .title {
   flex: 1;
+  font-weight: bold;
+  font-size: 1.4rem;
 }
 
 .badge {

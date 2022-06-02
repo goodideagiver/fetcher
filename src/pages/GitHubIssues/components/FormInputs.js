@@ -6,7 +6,7 @@ const FormInputs = ({ isDataPresent }) => {
 	return (
 		<>
 			<FormControl>
-				<FormLabel htmlFor='repo-name'>Repository name</FormLabel>
+				<FormLabel htmlFor='repo-name'>Repo owner name</FormLabel>
 				<Input id='repo-name' type='email' />
 			</FormControl>
 			<FormControl isDisabled={!isFilterable}>

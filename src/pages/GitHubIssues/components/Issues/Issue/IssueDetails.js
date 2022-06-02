@@ -1,5 +1,7 @@
 import Button from '../../../../../components/ui/Button/Button';
+import { FiExternalLink } from 'react-icons/fi';
 import IssueHeader from './IssueHeader';
+import { Link } from '@chakra-ui/react';
 import ReactDOM from 'react-dom';
 import classes from './IssueDetails.module.css';
 
@@ -16,8 +18,17 @@ const DetailsContainer = ({
 	onClose,
 }) => (
 	<div className={classes.content}>
-		<IssueHeader title={title} issueNumber={issueNumber} />
-		<p>Created: {new Date(dateCreated).toLocaleDateString()}</p>
+		<IssueHeader title={title} issueNumber={issueNumber} isOpen={isOpen} />
+		<main className={classes.info}>
+			<p>Created: {new Date(dateCreated).toLocaleDateString()}</p>
+			<div className={classes.desc}>
+				<h3>Detailed issue description: </h3>
+				<p>{description}</p>
+			</div>
+			<Link isExternal href={'foo'}>
+				View on GitHub <FiExternalLink />
+			</Link>
+		</main>
 		<div className={classes.actions}>
 			<Button>😍 Up</Button>
 			<Button>😣 Down</Button>

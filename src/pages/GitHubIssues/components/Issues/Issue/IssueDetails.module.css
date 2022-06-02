@@ -28,9 +28,31 @@
   display: flex;
   padding: 1rem;
   margin-top: 2rem;
+  flex-wrap: wrap;
 }
 
-.actions > * {
-  flex: 1;
+.actions>* {
+  flex: 1 1 100px;
   overflow: hidden;
+  white-space: nowrap;
+}
+
+.info {
+  padding: 0.5rem 1rem;
+}
+
+.desc {
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  border: 2px lightgray solid;
+
+}
+
+.desc h3 {
+  background-color: lightgray;
+}
+
+.desc p,
+.desc h3 {
+  padding: 0.5rem;
 }
