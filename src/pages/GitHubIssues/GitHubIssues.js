@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import IssueForm from './components/IssueForm';
 import Issues from './components/Issues/Issues';
 import axios from 'axios';
-import styles from './GitHubIssues.module.css';
 
 const GitHubIssues = () => {
 	const [issuesData, setIssuesData] = useState(null);
