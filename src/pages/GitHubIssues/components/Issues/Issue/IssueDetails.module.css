@@ -16,6 +16,7 @@
   transform: translate(-50%, -50%);
   width: 95%;
   max-width: 500px;
+  max-height: 95%;
   background-color: white;
   border-radius: 1rem;
   box-shadow: var(--base-shadow);
@@ -35,10 +36,6 @@
   flex: 1 1 100px;
   overflow: hidden;
   white-space: nowrap;
-}
-
-.info {
-  padding: 0.5rem 1rem;
 }
 
 .desc {

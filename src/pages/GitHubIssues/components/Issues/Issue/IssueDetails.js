@@ -16,6 +16,7 @@ const DetailsContainer = ({
 	description,
 	isOpen,
 	onClose,
+	url,
 }) => (
 	<div className={classes.content}>
 		<IssueHeader title={title} issueNumber={issueNumber} isOpen={isOpen} />
@@ -25,7 +26,7 @@ const DetailsContainer = ({
 				<h3>Detailed issue description: </h3>
 				<p>{description}</p>
 			</div>
-			<Link isExternal href={'foo'}>
+			<Link isExternal href={url}>
 				View on GitHub <FiExternalLink />
 			</Link>
 		</main>
