@@ -42,12 +42,18 @@
 
 .info {
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
 }
 
 .desc {
   border-radius: 0.5rem;
   margin-top: 1rem;
   border: 2px lightgray solid;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .desc h3 {
@@ -57,4 +63,29 @@
 .desc p,
 .desc h3 {
   padding: 0.5rem;
+}
+
+.desc p {
+  overflow-y: auto;
+}
+
+.md h2 {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  font-weight: bold;
+}
+
+.md code {
+  font-weight: bold;
+  color: blue;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: lightgray;
+  border-radius: 5px;
+  padding: 5px;
+  display: block;
+}
+
+.md ul,
+.md ol {
+  padding-left: 2rem;
 }

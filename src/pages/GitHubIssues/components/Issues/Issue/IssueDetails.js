@@ -3,6 +3,7 @@ import { FiExternalLink } from 'react-icons/fi';
 import IssueHeader from './IssueHeader';
 import { Link } from '@chakra-ui/react';
 import ReactDOM from 'react-dom';
+import ReactMarkdown from 'react-markdown';
 import classes from './IssueDetails.module.css';
 
 const Backdrop = ({ onClose }) => (
@@ -24,7 +25,9 @@ const DetailsContainer = ({
 			<p>Created: {new Date(dateCreated).toLocaleDateString()}</p>
 			<div className={classes.desc}>
 				<h3>Detailed issue description: </h3>
-				<p>{description}</p>
+				<p className={classes.md}>
+					<ReactMarkdown>{description}</ReactMarkdown>
+				</p>
 			</div>
 			<Link isExternal href={url}>
 				View on GitHub <FiExternalLink />
