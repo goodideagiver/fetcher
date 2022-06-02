@@ -15,7 +15,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 95%;
-  max-width: 500px;
+  max-width: 1000px;
   max-height: 95%;
   background-color: white;
   border-radius: 1rem;
@@ -60,29 +60,41 @@
   background-color: lightgray;
 }
 
-.desc p,
-.desc h3 {
+.desc>p,
+.desc>h3 {
   padding: 0.5rem;
 }
 
-.desc p {
+.desc>div {
   overflow-y: auto;
 }
 
 .md h2 {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   margin-top: 2rem;
   font-weight: bold;
+  padding: 0.5rem;
+}
+
+.md h3 {
+  margin-top: 2rem;
+  padding: 0.5rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.md p {
+  padding-left: 1rem;
+
 }
 
 .md code {
   font-weight: bold;
   color: blue;
   font-family: 'Courier New', Courier, monospace;
-  background-color: lightgray;
   border-radius: 5px;
   padding: 5px;
-  display: block;
+  white-space: pre-wrap;
 }
 
 .md ul,

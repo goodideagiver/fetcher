@@ -25,9 +25,21 @@ const DetailsContainer = ({
 			<p>Created: {new Date(dateCreated).toLocaleDateString()}</p>
 			<div className={classes.desc}>
 				<h3>Detailed issue description: </h3>
-				<p className={classes.md}>
-					<ReactMarkdown>{description}</ReactMarkdown>
-				</p>
+				<div className={classes.md}>
+					<ReactMarkdown
+						components={{
+							img({ src }) {
+								return (
+									<a href={src} target='_blank' rel='noreferrer noopener'>
+										<img src={src} />
+									</a>
+								);
+							},
+						}}
+					>
+						{description}
+					</ReactMarkdown>
+				</div>
 			</div>
 			<Link isExternal href={url}>
 				View on GitHub <FiExternalLink />
