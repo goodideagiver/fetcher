@@ -4,17 +4,20 @@
 	top: 0;
 	left: 0;
 	height: 100%;
-	width: 300px;
+	width: min(300px, 100vw);
 	z-index: 2;
+	pointer-events: none;
 }
 
 .sidebar {
 	background-color: rgba(255, 255, 255, 0.857);
 	box-shadow: var(--base-shadow);
 	flex: 1;
+	pointer-events: all;
 }
 
 .button {
+	pointer-events: all;
 	height: fit-content;
 	margin-top: 1rem;
 	font-size: 1rem;
@@ -35,6 +38,7 @@
 }
 
 @supports (backdrop-filter: blur(15px)) {
+
 	.sidebar,
 	.button {
 		--border: 2px solid rgba(0, 0, 0, 0.1);
