@@ -5,7 +5,7 @@
 	left: 0;
 	height: 100%;
 	width: min(300px, 100vw);
-	z-index: 2;
+	z-index: var(--normal-overlay-index);
 	pointer-events: none;
 }
 

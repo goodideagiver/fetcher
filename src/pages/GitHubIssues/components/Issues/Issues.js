@@ -1,3 +1,4 @@
+import Issue from './Issue/Issue';
 import styles from './Issues.module.css';
 import { useEffect } from 'react';
 
@@ -6,10 +7,9 @@ const Issues = ({ data }) => {
 		return <div>No issues to display</div>;
 	}
 
-	console.log(data);
-
-
-	return <div>Issues</div>;
+	return data.map((issue) => {
+		return <Issue key={issue.id} {...issue} />;
+	});
 };
 
 export default Issues;

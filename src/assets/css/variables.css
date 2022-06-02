@@ -7,6 +7,11 @@
 	--color-emphasis: #0070f3;
 	--color-emphasis-hover: #1983ff;
 
-  --base-shadow: 0 4px 14px 0 rgb(0 0 0 / 10%);
-  --hover-shadow: 0 6px 20px rgb(93 93 93 / 23%);
+	--base-shadow: 0 4px 14px 0 rgb(0 0 0 / 10%);
+	--hover-shadow: 0 6px 20px rgb(93 93 93 / 23%);
+
+	--normal-overlay-index: 10;
+
+	--modal-bg-index: 2137;
+	--modal-content-index: 2138;
 }

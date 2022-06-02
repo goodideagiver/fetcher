@@ -1,6 +1,7 @@
 .base {
 	background-color: white;
-	padding: 1rem 2rem;
+	padding: .5rem 2rem;
+	height: fit-content;
 	border: 0;
 	box-shadow: var(--base-shadow);
 	cursor: pointer;

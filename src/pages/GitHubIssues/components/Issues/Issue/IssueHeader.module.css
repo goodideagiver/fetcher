@@ -1,0 +1,28 @@
+.header {
+  padding: 1rem;
+  justify-content: space-between;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  background-color: lightgray;
+}
+
+.title {
+  flex: 1;
+}
+
+.badge {
+  padding: 0.2rem 1rem;
+  border-radius: 1rem;
+  color: white;
+  border: 2px rgba(0, 0, 0, 0.377) solid;
+}
+
+.open {
+  background-color: green;
+}
+
+.closed {
+  background-color: gray;
+}
