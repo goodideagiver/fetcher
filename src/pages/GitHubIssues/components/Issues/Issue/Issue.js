@@ -3,6 +3,10 @@ import IssueHeader from './IssueHeader';
 import styles from './Issue.module.css';
 import { useState } from 'react';
 
+const DateCreatedDisplay = ({ date }) => (
+	<p className={styles.issueDate}>Created: {date}</p>
+);
+
 const Issue = ({
 	title,
 	issueNumber,
@@ -21,7 +25,7 @@ const Issue = ({
 		<>
 			<article onClick={toggleDetails} className={styles.issue}>
 				<IssueHeader title={title} issueNumber={issueNumber} isOpen={isOpen} />
-				<p className={styles.issueDate}>Created: {formattedDate}</p>
+				<DateCreatedDisplay date={formattedDate} />
 			</article>
 			{detailsOpen && (
 				<IssueDetails
