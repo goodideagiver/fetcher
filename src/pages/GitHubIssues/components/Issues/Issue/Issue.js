@@ -18,7 +18,7 @@ const Issue = ({
 }) => {
 	const [detailsOpen, setDetailsOpen] = useState(false);
 
-	const formattedDate = new Date(dateCreated).toLocaleDateString();
+	const formattedDate = new Date(dateCreated).toUTCString();
 
 	const toggleDetails = () => setDetailsOpen(!detailsOpen);
 
@@ -37,7 +37,8 @@ const Issue = ({
 				<IssueDetails
 					onClose={toggleDetails}
 					data={{
-						isPullRequest,title,
+						isPullRequest,
+						title,
 						issueNumber,
 						dateCreated,
 						description,
