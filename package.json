@@ -16,6 +16,7 @@
     "@chakra-ui/theme-tools": "^2.0.1",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
+    "@reduxjs/toolkit": "^1.8.2",
     "axios": "^0.27.2",
     "framer-motion": "^6.3.6",
     "octokit": "^1.7.1",
@@ -25,7 +26,8 @@
     "react-infinite-scroll-component": "^6.1.0",
     "react-markdown": "^8.0.3",
     "react-router": "^5.3.3",
-    "react-router-dom": "^5.3.3"
+    "react-router-dom": "^5.3.3",
+    "redux": "^4.2.0"
   },
   "devDependencies": {
     "eslint": "^8.16.0",
