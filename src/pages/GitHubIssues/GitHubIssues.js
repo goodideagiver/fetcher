@@ -11,7 +11,7 @@ import { githubIssuesActions } from '../../store/github-issues-slice';
 const NEXT_PAGE_INCREMENT = 1;
 const INITIAL_NEXT_PAGE = 2;
 const INITIAL_ISSUES_COUNT = 5;
-const API_TOKEN = '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';
+const API_TOKEN = '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';
 
 const GitHubIssues = () => {
 	const dispatch = useDispatch();
@@ -46,7 +46,7 @@ const GitHubIssues = () => {
 			`https://api.github.com/repos/facebook/react/issues?page=${newIssuesPage}&per_page=5`,
 			{
 				headers: {
-					Authorization: 'token ${API_TOKEN}',
+					Authorization: `token ${API_TOKEN}`,
 				},
 			}
 		);
