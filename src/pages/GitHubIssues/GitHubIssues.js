@@ -8,8 +8,8 @@ import Issues from './components/Issues/Issues';
 import axios from 'axios';
 import { githubIssuesActions } from '../../store/github-issues-slice';
 
-const newPageNumberIncrement = 1;
-const initialNextPageNumber = 2;
+const NEXT_PAGE_INCREMENT = 1;
+const INITIAL_NEXT_PAGE = 2;
 const INITIAL_ISSUES_COUNT = 5;
 const API_TOKEN = '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';
 
@@ -18,7 +18,7 @@ const GitHubIssues = () => {
 	const issuesData = useSelector((state) => state.githubIssues.issuesList);
 	const repoOwner = useSelector((state) => state.githubIssues.owner);
 	const repoName = useSelector((state) => state.githubIssues.repo);
-	const [newIssuesPage, setNewIssuesPage] = useState(initialNextPageNumber);
+	const [newIssuesPage, setNewIssuesPage] = useState(INITIAL_NEXT_PAGE);
 
 	let formattedIssues = null;
 
@@ -52,7 +52,7 @@ const GitHubIssues = () => {
 		);
 
 		dispatch(githubIssuesActions.addGivenGitHubIssue(data.data));
-		setNewIssuesPage(newIssuesPage + newPageNumberIncrement);
+		setNewIssuesPage(newIssuesPage + NEXT_PAGE_INCREMENT);
 	};
 
 	if (issuesData && issuesData.length) {
