@@ -14,6 +14,7 @@ const Issue = ({
 	description,
 	isOpen,
 	url,
+	isPullRequest,
 }) => {
 	const [detailsOpen, setDetailsOpen] = useState(false);
 
@@ -24,13 +25,25 @@ const Issue = ({
 	return (
 		<>
 			<article onClick={toggleDetails} className={styles.issue}>
-				<IssueHeader title={title} issueNumber={issueNumber} isOpen={isOpen} />
+				<IssueHeader
+					title={title}
+					issueNumber={issueNumber}
+					isOpen={isOpen}
+					isPullRequest={isPullRequest}
+				/>
 				<DateCreatedDisplay date={formattedDate} />
 			</article>
 			{detailsOpen && (
 				<IssueDetails
 					onClose={toggleDetails}
-					data={{ title, issueNumber, dateCreated, description, isOpen, url }}
+					data={{
+						isPullRequest,title,
+						issueNumber,
+						dateCreated,
+						description,
+						isOpen,
+						url,
+					}}
 				/>
 			)}
 		</>

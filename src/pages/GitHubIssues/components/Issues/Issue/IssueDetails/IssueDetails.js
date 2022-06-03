@@ -15,10 +15,16 @@ const DetailsContainer = ({
 	description,
 	isOpen,
 	onClose,
+	isPullRequest,
 	url,
 }) => (
 	<div className={classes.content}>
-		<IssueHeader title={title} issueNumber={issueNumber} isOpen={isOpen} />
+		<IssueHeader
+			isPullRequest={isPullRequest}
+			title={title}
+			issueNumber={issueNumber}
+			isOpen={isOpen}
+		/>
 		<IssueContent
 			description={description}
 			url={url}

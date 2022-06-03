@@ -48,6 +48,7 @@ const GitHubIssues = () => {
 				isOpen: issue.state === 'open',
 				description: issue.body,
 				url: issue.html_url,
+				isPullRequest: issue.pull_request,
 			};
 		});
 	}

@@ -1,0 +1,11 @@
+.iconContainer {
+	display: grid;
+	place-items: center;
+	padding: 0.5rem;
+	border-radius: 50%;
+	background-color: white;
+	color: black;
+	font-size: 1.5rem;
+  box-shadow: var(--base-shadow);
+	/* border: gray 2px solid; */
+}
