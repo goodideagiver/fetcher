@@ -3,7 +3,7 @@ import IssueHeader from './IssueHeader';
 import styles from './Issue.module.css';
 import { useState } from 'react';
 
-const DateCreatedDisplay = ({ date }) => (
+export const DateCreatedDisplay = ({ date }) => (
 	<p className={styles.issueDate}>Created: {date}</p>
 );
 
