@@ -1,44 +1,60 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
+import Button from '../../components/ui/Button/Button';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import IssueForm from './components/IssueForm';
 import Issues from './components/Issues/Issues';
 import axios from 'axios';
+import { githubIssuesActions } from '../../store/github-issues-slice';
 
 const newPageNumberIncrement = 1;
-const initialPageNumber = 1;
+const initialNextPageNumber = 2;
+const INITIAL_ISSUES_COUNT = 5;
 
 const GitHubIssues = () => {
-	const [issuesData, setIssuesData] = useState(null);
-	const [page, setPage] = useState(initialPageNumber);
+	const dispatch = useDispatch();
+	const issuesData = useSelector((state) => state.githubIssues.issuesList);
+	const repoOwner = useSelector((state) => state.githubIssues.owner);
+	const repoName = useSelector((state) => state.githubIssues.repo);
+	const [newIssuesPage, setNewIssuesPage] = useState(initialNextPageNumber);
 
 	let formattedIssues = null;
 
 	useEffect(() => {
-		if (issuesData === null) {
+		if (!issuesData || !issuesData.issuesList) {
 			const getIssues = async () => {
 				const data = await axios.get(
-					`https://api.github.com/repos/facebook/react/issues?page=1&per_page=5`
+					`https://api.github.com/repos/${repoOwner}/${repoName}/issues?page=1&per_page=${INITIAL_ISSUES_COUNT}`,
+					{
+						headers: {
+							Authorization: 'token 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',
+						},
+					}
 				);
-				console.log(data);
-				setIssuesData(data.data);
+				// console.log(data);
+				dispatch(githubIssuesActions.setGitHubIssues(data.data));
 			};
 
 			getIssues();
 		}
-	}, []);
+	}, [repoName, repoOwner]);
 
-	const getNextPage = async () => {
-		setPage(page + newPageNumberIncrement);
-
+	const getMoreIssues = async () => {
 		const data = await axios.get(
-			`https://api.github.com/repos/facebook/react/issues?page=1&per_page=5`
+			`https://api.github.com/repos/facebook/react/issues?page=${newIssuesPage}&per_page=5`,
+			{
+				headers: {
+					Authorization: 'token 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',
+				},
+			}
 		);
 
-		setIssuesData(data.data);
+		dispatch(githubIssuesActions.addGivenGitHubIssue(data.data));
+		setNewIssuesPage(newIssuesPage + newPageNumberIncrement);
 	};
 
-	if (issuesData) {
+	if (issuesData && issuesData.length) {
 		formattedIssues = issuesData.map((issue) => {
 			return {
 				id: issue.id,
@@ -68,6 +84,7 @@ const GitHubIssues = () => {
 					<Issues issuesList={formattedIssues} />
 				</InfiniteScroll>
 			)}
+			<Button onClick={getMoreIssues}>Fetch more</Button>
 		</div>
 	);
 };

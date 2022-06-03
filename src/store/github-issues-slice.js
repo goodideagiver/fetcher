@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { issuesList: [] };
+const initialState = { issuesList: [], repo: 'react', owner: 'facebook' };
 
 export const githubIssuesSlice = createSlice({
 	name: 'githubIssues',
@@ -10,7 +10,7 @@ export const githubIssuesSlice = createSlice({
 			state.issuesList = action.payload;
 		},
 		addGivenGitHubIssue: (state, action) => {
-			state.issuesList.push(action.payload);
+			state.issuesList.push(...action.payload);
 		},
 		resetGitHubIssues: (state) => {
 			state.issuesList = [];

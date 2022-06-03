@@ -9,6 +9,32 @@ export const issueLikesSlice = createSlice({
 		addLikedIssue: (state, action) => {
 			state.likedIssues.push(action.payload);
 		},
+		addLikeToIssue: (state, action) => {
+			const issue = state.likedIssues.find(
+				(issue) => issue.id === action.payload.issueId
+			);
+			if (issue) {
+				issue.likes += 1;
+			} else {
+				state.likedIssues.push({
+					id: action.payload.issueId,
+					likes: 1,
+				});
+			}
+		},
+		removeLikeFromIssue: (state, action) => {
+			const issue = state.likedIssues.find(
+				(issue) => issue.id === action.payload.issueId
+			);
+			if (issue) {
+				issue.likes -= 1;
+			} else {
+				state.likedIssues.push({
+					id: action.payload.issueId,
+					likes: -1,
+				});
+			}
+		},
 	},
 });
 
