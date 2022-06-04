@@ -1,11 +1,33 @@
-import Button from '../../../../../../../../components/ui/Button/Button';
-import classes from './IssueActions.module.css';
+import { useDispatch, useSelector } from 'react-redux';
 
-const IssueActions = ({ onClose }) => {
+import Button from '../../../../../../../../components/ui/Button/Button';
+import IssueVoteDisplay from './IssueVoteDisplay';
+import classes from './IssueActions.module.css';
+import { issueLikesActions } from '../../../../../../../../store/issue-likes-slice';
+
+const IssueActions = ({ onClose, issueId }) => {
+	const issueArray = useSelector((state) => state.likedIssues);
+
+	const existingIssue =
+		issueArray &&
+		issueArray.likedIssues.length &&
+		issueArray.likedIssues.find((issue) => issue.id === issueId);
+
+	const issueVotes = existingIssue && existingIssue.likes;
+
+	const dispatch = useDispatch();
+
+	const upvoteIssueHandler = () =>
+		dispatch(issueLikesActions.addLikeToIssue({ issueId }));
+
+	const downvoteIssueHandler = () =>
+		dispatch(issueLikesActions.removeLikeFromIssue({ issueId }));
+
 	return (
 		<div className={classes.actions}>
-			<Button>😍 Up</Button>
-			<Button>😣 Down</Button>
+			<IssueVoteDisplay voteCount={issueVotes} />
+			<Button onClick={upvoteIssueHandler}>😍 Up</Button>
+			<Button onClick={downvoteIssueHandler}>😣 Down</Button>
 			<Button onClick={onClose} primary={true}>
 				Exit
 			</Button>

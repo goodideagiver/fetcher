@@ -6,7 +6,7 @@ const Issues = ({ issuesList }) => {
 	}
 
 	return issuesList.map((issue) => {
-		return <Issue key={issue.id} {...issue} />;
+		return <Issue key={issue.id} id={issue.id} {...issue} />;
 	});
 };
 

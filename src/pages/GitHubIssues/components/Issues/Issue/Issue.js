@@ -15,6 +15,7 @@ const Issue = ({
 	isOpen,
 	url,
 	isPullRequest,
+	id,
 }) => {
 	const [detailsOpen, setDetailsOpen] = useState(false);
 
@@ -37,6 +38,7 @@ const Issue = ({
 				<IssueDetails
 					onClose={toggleDetails}
 					data={{
+						id,
 						isPullRequest,
 						title,
 						issueNumber,

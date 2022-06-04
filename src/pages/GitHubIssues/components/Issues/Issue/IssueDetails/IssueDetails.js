@@ -17,6 +17,7 @@ const DetailsContainer = ({
 	onClose,
 	isPullRequest,
 	url,
+	id,
 }) => (
 	<div className={classes.content}>
 		<IssueHeader
@@ -30,7 +31,7 @@ const DetailsContainer = ({
 			url={url}
 			dateCreated={dateCreated}
 		/>
-		<IssueActions onClose={onClose} />
+		<IssueActions issueId={id} onClose={onClose} />
 	</div>
 );
 
