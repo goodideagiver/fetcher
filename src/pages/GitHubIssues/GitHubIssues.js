@@ -9,7 +9,7 @@ import PageLoadingSpinner from '../../components/ui/PageLoadingSpinner/PageLoadi
 import axios from 'axios';
 import classes from './GitHubIssues.module.css';
 import { githubIssuesActions } from '../../store/github-issues-slice';
-import { issueLikesActions } from '../../store/issue-likes-slice';
+import { useLocalStorage } from './useLocalStorage';
 
 const NEXT_PAGE_INCREMENT = 1;
 const INITIAL_NEXT_PAGE = 2;
@@ -17,22 +17,18 @@ const INITIAL_ISSUES_COUNT = 5;
 const API_TOKEN = ''; //for testing purposes (development)
 
 const GitHubIssues = () => {
-	const [error, setError] = useState(null);
+	useLocalStorage(); //loads saved liked issues from local storage
 	const dispatch = useDispatch();
+
 	const issuesData = useSelector((state) => state.githubIssues.issuesList);
 	const repoOwner = useSelector((state) => state.githubIssues.owner);
 	const repoName = useSelector((state) => state.githubIssues.repo);
+	
+	const [error, setError] = useState(null);
 	const [newIssuesPage, setNewIssuesPage] = useState(INITIAL_NEXT_PAGE);
 	const [isLoading, setIsLoading] = useState(false);
 
 	let formattedIssues = null;
-
-	useEffect(() => {
-		const existingIssues = localStorage.getItem('likedIssues');
-		if (existingIssues) {
-			dispatch(issueLikesActions.setLikedIssues(JSON.parse(existingIssues)));
-		} 
-	}, []);
 
 	useEffect(() => {
 		if ((!issuesData || !issuesData.issuesList) && repoOwner && repoName) {
