@@ -4,10 +4,13 @@ import Button from '../../../../../../../../components/ui/Button/Button';
 import IssueVoteDisplay from './IssueVoteDisplay';
 import classes from './IssueActions.module.css';
 import { issueLikesActions } from '../../../../../../../../store/issue-likes-slice';
+import { useEffect } from 'react';
 
 const IssueActions = ({ onClose, issueId }) => {
 	const issueArray = useSelector((state) => state.likedIssues);
-	const likedIssuesArray = useSelector((state) => state.likedIssues.likedIssues);
+	const likedIssuesArray = useSelector(
+		(state) => state.likedIssues.likedIssues
+	);
 
 	const existingIssue =
 		issueArray &&
@@ -18,19 +21,17 @@ const IssueActions = ({ onClose, issueId }) => {
 
 	const dispatch = useDispatch();
 
-	const updateLikesLocalStorage = () => {
-		localStorage.setItem('likedIssues', JSON.stringify(likedIssuesArray));
-	};
-
 	const upvoteIssueHandler = () => {
 		dispatch(issueLikesActions.addLikeToIssue({ issueId }));
-		updateLikesLocalStorage();
 	};
 
 	const downvoteIssueHandler = () => {
 		dispatch(issueLikesActions.removeLikeFromIssue({ issueId }));
-		updateLikesLocalStorage();
 	};
+
+	useEffect(() => {
+		localStorage.setItem('likedIssues', JSON.stringify(likedIssuesArray));
+	}, [issueVotes]);
 
 	return (
 		<div className={classes.actions}>
