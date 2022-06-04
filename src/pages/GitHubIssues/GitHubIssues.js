@@ -25,8 +25,6 @@ const GitHubIssues = () => {
 	const [newIssuesPage, setNewIssuesPage] = useState(INITIAL_NEXT_PAGE);
 	const [isLoading, setIsLoading] = useState(false);
 
-	const likedIssues = useSelector((state) => state.likedIssues);
-
 	let formattedIssues = null;
 
 	useEffect(() => {
