@@ -1,0 +1,9 @@
+.issues-wrapper {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.scrollable-container {
+  overflow-y: auto;
+}

@@ -6,6 +6,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import IssueForm from './components/IssueForm';
 import Issues from './components/Issues/Issues';
 import axios from 'axios';
+import classes from './GitHubIssues.module.css'
 import { githubIssuesActions } from '../../store/github-issues-slice';
 
 const NEXT_PAGE_INCREMENT = 1;
@@ -95,20 +96,23 @@ const GitHubIssues = () => {
 	}
 
 	return (
-		<div>
+		<div className={classes['issues-wrapper']}>
 			<header>
 				<IssueForm />
 			</header>
 			{error && <div>There was an issue loading the data: {error}</div>}
-			{formattedIssues && !error && (
-				<InfiniteScroll
-					next={'feed me more'}
-					dataLength={issuesData.length}
-					hasMore={true}
-					loader={<h4>Loading...</h4>}
-				>
-					<Issues issuesList={formattedIssues} />
-				</InfiniteScroll>
+			{formattedIssues && !error && issuesData && issuesData.length && (
+				<div id='scrollContainer' className={classes['scrollable-container']}>
+					<InfiniteScroll
+						dataLength={issuesData.length}
+						next={getMoreIssues}
+						hasMore={true}
+						loader={<h4>Loading...</h4>}
+						scrollableTarget='scrollContainer'
+					>
+						<Issues issuesList={formattedIssues} />
+					</InfiniteScroll>
+				</div>
 			)}
 			<Button onClick={getMoreIssues}>Fetch more</Button>
 		</div>
