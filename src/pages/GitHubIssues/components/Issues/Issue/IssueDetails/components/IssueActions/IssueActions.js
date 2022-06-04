@@ -7,6 +7,7 @@ import { issueLikesActions } from '../../../../../../../../store/issue-likes-sli
 
 const IssueActions = ({ onClose, issueId }) => {
 	const issueArray = useSelector((state) => state.likedIssues);
+	const likedIssuesArray = useSelector((state) => state.likedIssues.likedIssues);
 
 	const existingIssue =
 		issueArray &&
@@ -17,11 +18,19 @@ const IssueActions = ({ onClose, issueId }) => {
 
 	const dispatch = useDispatch();
 
-	const upvoteIssueHandler = () =>
-		dispatch(issueLikesActions.addLikeToIssue({ issueId }));
+	const updateLikesLocalStorage = () => {
+		localStorage.setItem('likedIssues', JSON.stringify(likedIssuesArray));
+	};
 
-	const downvoteIssueHandler = () =>
+	const upvoteIssueHandler = () => {
+		dispatch(issueLikesActions.addLikeToIssue({ issueId }));
+		updateLikesLocalStorage();
+	};
+
+	const downvoteIssueHandler = () => {
 		dispatch(issueLikesActions.removeLikeFromIssue({ issueId }));
+		updateLikesLocalStorage();
+	};
 
 	return (
 		<div className={classes.actions}>

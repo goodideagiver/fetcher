@@ -35,6 +35,9 @@ export const issueLikesSlice = createSlice({
 				});
 			}
 		},
+		setLikedIssues: (state, action) => {
+			state.likedIssues = action.payload;
+		}
 	},
 });
 

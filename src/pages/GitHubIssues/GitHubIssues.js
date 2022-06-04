@@ -9,6 +9,7 @@ import PageLoadingSpinner from '../../components/ui/PageLoadingSpinner/PageLoadi
 import axios from 'axios';
 import classes from './GitHubIssues.module.css';
 import { githubIssuesActions } from '../../store/github-issues-slice';
+import { issueLikesActions } from '../../store/issue-likes-slice';
 
 const NEXT_PAGE_INCREMENT = 1;
 const INITIAL_NEXT_PAGE = 2;
@@ -24,7 +25,16 @@ const GitHubIssues = () => {
 	const [newIssuesPage, setNewIssuesPage] = useState(INITIAL_NEXT_PAGE);
 	const [isLoading, setIsLoading] = useState(false);
 
+	const likedIssues = useSelector((state) => state.likedIssues);
+
 	let formattedIssues = null;
+
+	useEffect(() => {
+		const existingIssues = localStorage.getItem('likedIssues');
+		if (existingIssues) {
+			dispatch(issueLikesActions.setLikedIssues(JSON.parse(existingIssues)));
+		} 
+	}, []);
 
 	useEffect(() => {
 		if ((!issuesData || !issuesData.issuesList) && repoOwner && repoName) {
@@ -105,7 +115,7 @@ const GitHubIssues = () => {
 			<header>
 				<IssueForm />
 			</header>
-			{error && <DisplayError errorMessage={error}/>}
+			{error && <DisplayError errorMessage={error} />}
 			{formattedIssues && !error && issuesData && issuesData.length && (
 				<div id='scrollContainer' className={classes['scrollable-container']}>
 					<InfiniteScroll
