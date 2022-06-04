@@ -1,0 +1,15 @@
+.errorDisplay {
+  padding: 2rem;
+  box-shadow: var(--base-shadow);
+  max-width: 600px;
+  margin: 1rem auto;
+  border-radius: 2rem;
+}
+
+.errorIcon {
+  font-size: 5rem;
+  text-align: center;
+  width: 100%;
+  color: red;
+  margin-bottom: 1rem;
+}

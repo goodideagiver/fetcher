@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
-import Button from '../../components/ui/Button/Button';
+import DisplayError from './components/DisplayError/DisplayError';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import IssueForm from './components/IssueForm';
 import Issues from './components/Issues/Issues';
+import PageLoadingSpinner from '../../components/ui/PageLoadingSpinner/PageLoadingSpinner';
 import axios from 'axios';
-import classes from './GitHubIssues.module.css'
+import classes from './GitHubIssues.module.css';
 import { githubIssuesActions } from '../../store/github-issues-slice';
 
 const NEXT_PAGE_INCREMENT = 1;
@@ -21,12 +22,14 @@ const GitHubIssues = () => {
 	const repoOwner = useSelector((state) => state.githubIssues.owner);
 	const repoName = useSelector((state) => state.githubIssues.repo);
 	const [newIssuesPage, setNewIssuesPage] = useState(INITIAL_NEXT_PAGE);
+	const [isLoading, setIsLoading] = useState(false);
 
 	let formattedIssues = null;
 
 	useEffect(() => {
 		if ((!issuesData || !issuesData.issuesList) && repoOwner && repoName) {
 			const getIssues = async () => {
+				setIsLoading(true);
 				try {
 					let data;
 					if (API_TOKEN) {
@@ -43,12 +46,12 @@ const GitHubIssues = () => {
 							`https://api.github.com/repos/${repoOwner}/${repoName}/issues?page=1&per_page=${INITIAL_ISSUES_COUNT}`
 						);
 					}
-					// console.log(data);
 					dispatch(githubIssuesActions.setGitHubIssues(data.data));
 					setError(null);
 				} catch (error) {
 					setError(error.response.data.message);
 				}
+				setIsLoading(false);
 			};
 
 			getIssues();
@@ -57,6 +60,7 @@ const GitHubIssues = () => {
 
 	const getMoreIssues = async () => {
 		try {
+			setIsLoading(true);
 			let data;
 			if (API_TOKEN) {
 				data = await axios.get(
@@ -78,6 +82,7 @@ const GitHubIssues = () => {
 		} catch (error) {
 			setError(error.response.data.message);
 		}
+		setIsLoading(false);
 	};
 
 	if (issuesData && issuesData.length) {
@@ -100,21 +105,20 @@ const GitHubIssues = () => {
 			<header>
 				<IssueForm />
 			</header>
-			{error && <div>There was an issue loading the data: {error}</div>}
+			{error && <DisplayError errorMessage={error}/>}
 			{formattedIssues && !error && issuesData && issuesData.length && (
 				<div id='scrollContainer' className={classes['scrollable-container']}>
 					<InfiniteScroll
 						dataLength={issuesData.length}
 						next={getMoreIssues}
 						hasMore={true}
-						loader={<h4>Loading...</h4>}
 						scrollableTarget='scrollContainer'
 					>
 						<Issues issuesList={formattedIssues} />
 					</InfiniteScroll>
+					{isLoading && <PageLoadingSpinner />}
 				</div>
 			)}
-			<Button onClick={getMoreIssues}>Fetch more</Button>
 		</div>
 	);
 };
