@@ -11,9 +11,10 @@ import { githubIssuesActions } from '../../store/github-issues-slice';
 const NEXT_PAGE_INCREMENT = 1;
 const INITIAL_NEXT_PAGE = 2;
 const INITIAL_ISSUES_COUNT = 5;
-const API_TOKEN = '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';
+const API_TOKEN = ''; //for testing purposes (development)
 
 const GitHubIssues = () => {
+	const [error, setError] = useState(null);
 	const dispatch = useDispatch();
 	const issuesData = useSelector((state) => state.githubIssues.issuesList);
 	const repoOwner = useSelector((state) => state.githubIssues.owner);
@@ -23,18 +24,30 @@ const GitHubIssues = () => {
 	let formattedIssues = null;
 
 	useEffect(() => {
-		if (!issuesData || !issuesData.issuesList) {
+		if ((!issuesData || !issuesData.issuesList) && repoOwner && repoName) {
 			const getIssues = async () => {
-				const data = await axios.get(
-					`https://api.github.com/repos/${repoOwner}/${repoName}/issues?page=1&per_page=${INITIAL_ISSUES_COUNT}`,
-					{
-						headers: {
-							Authorization: `token ${API_TOKEN}`,
-						},
+				try {
+					let data;
+					if (API_TOKEN) {
+						data = await axios.get(
+							`https://api.github.com/repos/${repoOwner}/${repoName}/issues?page=1&per_page=${INITIAL_ISSUES_COUNT}`,
+							{
+								headers: {
+									Authorization: `token ${API_TOKEN}`,
+								},
+							}
+						);
+					} else {
+						data = await axios.get(
+							`https://api.github.com/repos/${repoOwner}/${repoName}/issues?page=1&per_page=${INITIAL_ISSUES_COUNT}`
+						);
 					}
-				);
-				// console.log(data);
-				dispatch(githubIssuesActions.setGitHubIssues(data.data));
+					// console.log(data);
+					dispatch(githubIssuesActions.setGitHubIssues(data.data));
+					setError(null);
+				} catch (error) {
+					setError(error.response.data.message);
+				}
 			};
 
 			getIssues();
@@ -42,17 +55,28 @@ const GitHubIssues = () => {
 	}, [repoName, repoOwner]);
 
 	const getMoreIssues = async () => {
-		const data = await axios.get(
-			`https://api.github.com/repos/facebook/react/issues?page=${newIssuesPage}&per_page=5`,
-			{
-				headers: {
-					Authorization: `token ${API_TOKEN}`,
-				},
+		try {
+			let data;
+			if (API_TOKEN) {
+				data = await axios.get(
+					`https://api.github.com/repos/facebook/react/issues?page=${newIssuesPage}&per_page=5`,
+					{
+						headers: {
+							Authorization: `token ${API_TOKEN}`,
+						},
+					}
+				);
+			} else {
+				data = await axios.get(
+					`https://api.github.com/repos/facebook/react/issues?page=${newIssuesPage}&per_page=5`
+				);
 			}
-		);
 
-		dispatch(githubIssuesActions.addGivenGitHubIssue(data.data));
-		setNewIssuesPage(newIssuesPage + NEXT_PAGE_INCREMENT);
+			dispatch(githubIssuesActions.addGivenGitHubIssue(data.data));
+			setNewIssuesPage(newIssuesPage + NEXT_PAGE_INCREMENT);
+		} catch (error) {
+			setError(error.response.data.message);
+		}
 	};
 
 	if (issuesData && issuesData.length) {
@@ -75,7 +99,8 @@ const GitHubIssues = () => {
 			<header>
 				<IssueForm />
 			</header>
-			{formattedIssues && (
+			{error && <div>There was an issue loading the data: {error}</div>}
+			{formattedIssues && !error && (
 				<InfiniteScroll
 					next={'feed me more'}
 					dataLength={issuesData.length}
