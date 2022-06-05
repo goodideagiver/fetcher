@@ -6,9 +6,9 @@ export const useLocalStorage = () => {
   const dispatch = useDispatch();
 
 	useEffect(() => {
-		const savedLikedIssuesIdsFromLocalStorage = localStorage.getItem('likedIssues');
-		if (savedLikedIssuesIdsFromLocalStorage) {
-			dispatch(issueLikesActions.setLikedIssues(JSON.parse(savedLikedIssuesIdsFromLocalStorage)));
+		const localStorageSavedLikedIssues = localStorage.getItem('likedIssues');
+		if (localStorageSavedLikedIssues) {
+			dispatch(issueLikesActions.setLikedIssues(JSON.parse(localStorageSavedLikedIssues)));
 		}
 	}, []);
 };
