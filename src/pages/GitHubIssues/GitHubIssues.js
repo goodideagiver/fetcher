@@ -23,7 +23,7 @@ const GitHubIssues = () => {
 	const issuesData = useSelector((state) => state.githubIssues.issuesList);
 	const repoOwner = useSelector((state) => state.githubIssues.owner);
 	const repoName = useSelector((state) => state.githubIssues.repo);
-	
+
 	const [error, setError] = useState(null);
 	const [newIssuesPage, setNewIssuesPage] = useState(INITIAL_NEXT_PAGE);
 	const [isLoading, setIsLoading] = useState(false);
@@ -53,7 +53,15 @@ const GitHubIssues = () => {
 					dispatch(githubIssuesActions.setGitHubIssues(data.data));
 					setError(null);
 				} catch (error) {
-					setError(error.response.data.message);
+					if (
+						error.response &&
+						error.response.data &&
+						error.response.data.message
+					) {
+						setError(error.response.data.message);
+					} else {
+						setError(error.message);
+					}
 				}
 				setIsLoading(false);
 			};
