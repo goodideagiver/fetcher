@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { issuesList: [], repo: 'react', owner: 'facebook' };
+const initialState = { issuesList: [], repo: 'react', owner: 'facebook', filter: '' };
 
 export const githubIssuesSlice = createSlice({
 	name: 'githubIssues',
@@ -20,6 +20,15 @@ export const githubIssuesSlice = createSlice({
 		},
 		setRepoName: (state, action) => {
 			state.repo = action.payload;
+		},
+		setFilter: (state, action) => {
+			state.filter = action.payload;
+		},
+		resetAll: (state) => {
+			state.issuesList = [];
+			state.repo = '';
+			state.owner = '';
+			state.filter = '';
 		}
 	},
 });

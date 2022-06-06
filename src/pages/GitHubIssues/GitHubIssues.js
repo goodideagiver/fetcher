@@ -16,7 +16,7 @@ const GitHubIssues = () => {
 	return (
 		<div className={classes['issues-wrapper']}>
 			<header>
-				<IssueForm />
+				<IssueForm isDataPresent={!!formattedIssues && !!formattedIssues.length} />
 			</header>
 			{error && <DisplayError errorMessage={error} />}
 			{formattedIssues && !error && issuesData && issuesData.length && (

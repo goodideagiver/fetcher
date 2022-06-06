@@ -17,6 +17,7 @@ const useFetchIssues = () => {
 	const issuesData = useSelector((state) => state.githubIssues.issuesList);
 	const repoOwner = useSelector((state) => state.githubIssues.owner);
 	const repoName = useSelector((state) => state.githubIssues.repo);
+	const filter = useSelector((state) => state.githubIssues.filter);
 
 	let formattedIssues = null;
 
@@ -103,6 +104,12 @@ const useFetchIssues = () => {
 				isPullRequest: issue.pull_request,
 			};
 		});
+
+		if (filter) {
+			formattedIssues = formattedIssues.filter((issue) => {
+				return issue.title.toLowerCase().includes(filter.toLowerCase());
+			});
+		}
 	}
 
 	return {
