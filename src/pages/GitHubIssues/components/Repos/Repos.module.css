@@ -9,6 +9,8 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.604);
   z-index: var(--modal-bg-index);
+
+  animation: fadeIn 0.3s both;
 }
 
 .container {
@@ -42,4 +44,13 @@
   text-align: center;
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

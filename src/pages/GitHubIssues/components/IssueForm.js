@@ -69,7 +69,7 @@ const IssueForm = ({ isDataPresent = false }) => {
 			</Container>
 			{error && <DisplayError>{error}</DisplayError>}
 			{loading && <PageLoadingSpinner />}
-			{!loading && !!repoPickerVisible && (
+			{!!repoPickerVisible && (
 				<Repos onCancel={repoPickCancelHandler} filteredRepos={filteredRepos} onRepoPick={pickRepoHandler} />
 			)}
 		</>
