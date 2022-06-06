@@ -3,7 +3,7 @@ import * as classes from './Button.module.css';
 import { Link } from 'react-router-dom';
 
 const Button = ({ className, children, to, href, ...props }) => {
-	let buttonVariant = classes.button;
+	let buttonVariant = '';
 
 	if (props.primary) {
 		buttonVariant = classes.buttonPrimary;
