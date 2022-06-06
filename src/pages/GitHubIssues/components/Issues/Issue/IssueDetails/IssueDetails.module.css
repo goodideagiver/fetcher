@@ -6,9 +6,12 @@
   top: 0;
   width: 100%;
   z-index: var(--modal-bg-index);
+
+  animation: fadeIn 0.3s both;
 }
 
 .content {
+  animation: fadeIn 0.3s both;
   background-color: white;
   border-radius: 1rem;
   box-shadow: var(--base-shadow);
@@ -23,4 +26,13 @@
   transform: translate(-50%, -50%);
   width: 95%;
   z-index: var(--modal-content-index);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
