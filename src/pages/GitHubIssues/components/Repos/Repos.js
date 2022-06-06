@@ -10,7 +10,7 @@ const Repos = ({ filteredRepos, onRepoPick, onCancel }) => {
 			<div className={styles.container}>
 				<header className={styles.header}>
 					<h2 className={styles.title}>Pick repo</h2>
-					<RepoInfo/>
+					<RepoInfo />
 					<Button onClick={onCancel}>cancel</Button>
 				</header>
 				<ReposList filteredRepos={filteredRepos} onRepoPick={onRepoPick} />

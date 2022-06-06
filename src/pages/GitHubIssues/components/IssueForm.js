@@ -37,6 +37,7 @@ const IssueForm = ({ isDataPresent = false }) => {
 			dispatch(githubIssuesActions.setRepoName(''));
 			dispatch(githubIssuesActions.setGitHubIssues(null));
 			dispatch(githubIssuesActions.setOwner(inputOwner));
+			setInputOwner('');
 		}
 	};
 
@@ -46,7 +47,7 @@ const IssueForm = ({ isDataPresent = false }) => {
 		}
 	}, [repoName, owner]);
 
-	const repoPickerVisible = owner && !repoName && repos && repos.length;
+	const repoPickerVisible = owner && !repoName && !!repos && !!repos.length;
 
 	const filteredRepos = repos && repos.filter((repo) => repo.open_issues_count);
 
@@ -54,7 +55,7 @@ const IssueForm = ({ isDataPresent = false }) => {
 		dispatch(githubIssuesActions.setRepoName(''));
 		dispatch(githubIssuesActions.setGitHubIssues(null));
 		dispatch(githubIssuesActions.setOwner(''));
-	}
+	};
 
 	return (
 		<>
@@ -62,6 +63,7 @@ const IssueForm = ({ isDataPresent = false }) => {
 				<form onSubmit={searchButtonHandler} className={classes.form}>
 					<FormInputs
 						onOwnerInput={ownerInputHandler}
+						ownerValue={inputOwner}
 						isDataPresent={isDataPresent}
 					/>
 					<Button>Search</Button>
@@ -70,7 +72,11 @@ const IssueForm = ({ isDataPresent = false }) => {
 			{error && <DisplayError>{error}</DisplayError>}
 			{loading && <PageLoadingSpinner />}
 			{!!repoPickerVisible && (
-				<Repos onCancel={repoPickCancelHandler} filteredRepos={filteredRepos} onRepoPick={pickRepoHandler} />
+				<Repos
+					onCancel={repoPickCancelHandler}
+					filteredRepos={filteredRepos}
+					onRepoPick={pickRepoHandler}
+				/>
 			)}
 		</>
 	);
