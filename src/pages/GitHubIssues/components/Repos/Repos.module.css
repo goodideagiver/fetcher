@@ -43,31 +43,3 @@
   font-size: 1.5rem;
   font-weight: bold;
 }
-
-.list {
-  background-color: white;
-  justify-content: center;
-  list-style: none;
-  overflow-y: auto;
-}
-
-.item {
-  border-bottom: 1px gray solid;
-}
-
-.item button {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-}
-
-.item button:hover {
-  background-color: lightgray;
-}
-
-.repoName {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}

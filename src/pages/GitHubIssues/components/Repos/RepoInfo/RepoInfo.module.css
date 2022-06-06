@@ -1,0 +1,8 @@
+.root {
+  background-color: gray;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 3rem;
+  border-radius: 0.5rem;
+  box-shadow: inset rgba(0, 0, 0, 0.363) 0 5px 5px;
+}
