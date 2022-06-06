@@ -15,6 +15,12 @@ export const githubIssuesSlice = createSlice({
 		resetGitHubIssues: (state) => {
 			state.issuesList = [];
 		},
+		setOwner: (state, action) => {
+			state.owner = action.payload;
+		},
+		setRepoName: (state, action) => {
+			state.repo = action.payload;
+		}
 	},
 });
 

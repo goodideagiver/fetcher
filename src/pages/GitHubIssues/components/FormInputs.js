@@ -1,17 +1,17 @@
 import { FormControl, FormLabel, Input } from '@chakra-ui/react';
 
-const FormInputs = ({ isDataPresent }) => {
+const FormInputs = ({ isDataPresent, onOwnerInput }) => {
 	const isFilterable = !!isDataPresent;
 
 	return (
 		<>
 			<FormControl>
-				<FormLabel htmlFor='repo-name'>Repo owner name</FormLabel>
-				<Input id='repo-name' type='email' />
+				<FormLabel htmlFor='repo-owner'>Repo owner name</FormLabel>
+				<Input onInput={onOwnerInput} id='repo-owner' type='text' />
 			</FormControl>
-			<FormControl isDisabled={!isFilterable}>
+		<FormControl isDisabled={!isFilterable}>
 				<FormLabel htmlFor='filter-name'>Filter results by name</FormLabel>
-				<Input id='filter-name' type='email' />
+				<Input id='filter-name' type='text' />
 			</FormControl>
 		</>
 	);
