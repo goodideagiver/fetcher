@@ -14,7 +14,9 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem;
+  gap: 1rem;
 }
 
 .item button:hover {
@@ -25,4 +27,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.issueCount {
+  /* flex: 0 1 30%; */
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  box-shadow: var(--base-shadow);
 }

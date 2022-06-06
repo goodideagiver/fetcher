@@ -1,6 +1,6 @@
 import styles from './ReposList.module.css';
 
-const ReposList = ({filteredRepos,onRepoPick}) => {
+const ReposList = ({ filteredRepos, onRepoPick }) => {
 	if (!filteredRepos || !filteredRepos.length) {
 		return <p>No repos to show</p>;
 	}
@@ -11,7 +11,10 @@ const ReposList = ({filteredRepos,onRepoPick}) => {
 				<li className={styles.item} key={repo.id}>
 					<button onClick={() => onRepoPick(repo.name)}>
 						<p className={styles.repoName}>{repo.name}</p>{' '}
-						<p>Issues: {repo.open_issues_count}</p>
+						<p className={styles.issueCount}>
+							<span>Issues: </span>
+							<span>{repo.open_issues_count}</span>
+						</p>
 					</button>
 				</li>
 			))}
