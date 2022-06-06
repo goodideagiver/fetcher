@@ -1,0 +1,15 @@
+.root {
+  list-style: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.root a {
+  padding: 1rem;
+  display: block;
+}
+
+.root a:hover {
+  background-color: rgba(0, 0, 0, 0.073);
+}
