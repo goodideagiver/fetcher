@@ -2,7 +2,7 @@ import styles from './ReposList.module.css';
 
 const ReposList = ({ filteredRepos, onRepoPick }) => {
 	if (!filteredRepos || !filteredRepos.length) {
-		return <p>No repos to show</p>;
+		return <p className={styles.noRepos}>No repos to show</p>;
 	}
 
 	return (

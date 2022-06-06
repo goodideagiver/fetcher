@@ -38,3 +38,10 @@
   border-radius: 0.5rem;
   box-shadow: var(--base-shadow);
 }
+
+.noRepos {
+  width: 100%;
+  padding: 2rem;
+  text-align: center;
+  font-size: 2rem;
+}
