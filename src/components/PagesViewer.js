@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router';
 import GitHubIssues from '../pages/GitHubIssues/GitHubIssues';
 import PageLoadingSpinner from './ui/PageLoadingSpinner/PageLoadingSpinner';
 import { Suspense } from 'react';
-import WelcomeScreen from '../pages/WelcomeScreen';
+import WelcomeScreen from '../pages/WelcomeScreen/WelcomeScreen';
 
 const PagesViewer = () => {
 	return (

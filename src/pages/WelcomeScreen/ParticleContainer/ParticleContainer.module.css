@@ -1,0 +1,8 @@
+.root {
+  flex: 1;
+  overflow: hidden;
+}
+
+.root canvas {
+  height: 100vh !important;
+}
