@@ -69,7 +69,7 @@ const IssueForm = ({ isDataPresent = false }) => {
 					<Button>Search</Button>
 				</form>
 			</Container>
-			{error && <DisplayError>{error}</DisplayError>}
+			{error && <DisplayError errorMessage={error} />}
 			{loading && <PageLoadingSpinner />}
 			{!!repoPickerVisible && (
 				<Repos

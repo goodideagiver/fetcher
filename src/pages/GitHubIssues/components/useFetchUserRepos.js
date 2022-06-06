@@ -24,8 +24,8 @@ export const useFetchUserRepos = () => {
 			);
 			setRepos(data.data);
 		} catch (err) {
-			console.log(err);
-			setError(err.message);
+			console.log(err.response.statusText);
+			setError(err.response.statusText);
 		}
 		setLoading(false);
 	};

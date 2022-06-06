@@ -13,3 +13,8 @@
   color: red;
   margin-bottom: 1rem;
 }
+
+.message {
+  margin: auto;
+  width: fit-content;
+}

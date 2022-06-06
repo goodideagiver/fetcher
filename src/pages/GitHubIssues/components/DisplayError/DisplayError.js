@@ -6,7 +6,7 @@ const DisplayError = ({ errorMessage }) => {
 		<div className={styles.errorDisplay}>
 			<div>
 				<CgSmileSad className={styles.errorIcon}/>
-				<p>{errorMessage}</p>
+				<p className={styles.message}>{errorMessage}</p>
 			</div>
 		</div>
 	);
