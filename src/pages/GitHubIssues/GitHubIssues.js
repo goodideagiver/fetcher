@@ -19,7 +19,7 @@ const GitHubIssues = () => {
 				<IssueForm isDataPresent={!!formattedIssues && !!formattedIssues.length} />
 			</header>
 			{error && <DisplayError errorMessage={error} />}
-			{formattedIssues && !error && issuesData && issuesData.length && (
+			{formattedIssues && !error && issuesData && issuesData.length ? (
 				<div id='scrollContainer' className={classes['scrollable-container']}>
 					<InfiniteScroll
 						dataLength={issuesData.length}
@@ -31,7 +31,7 @@ const GitHubIssues = () => {
 					</InfiniteScroll>
 					{isLoading && <PageLoadingSpinner />}
 				</div>
-			)}
+			) : <DisplayError errorMessage='No issues found'/>}
 		</div>
 	);
 };

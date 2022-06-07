@@ -16,7 +16,7 @@ const MainNav = () => {
 
 	return (
 		<header className={styles.header}>
-			<h1 className={styles.title}>{headerContent}-</h1>
+			<h1 className={styles.title}>{headerContent}</h1>
 		</header>
 	);
 };
