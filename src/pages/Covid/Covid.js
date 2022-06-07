@@ -1,11 +1,11 @@
 import DataCards from './DataCards/DataCards';
 
-const GovData = () => {
+const Covid = () => {
 	return (
 		<>
 			<DataCards />
 		</>
-	);
+)
 };
 
-export default GovData;
+export default Covid;

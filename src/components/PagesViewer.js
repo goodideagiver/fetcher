@@ -4,7 +4,7 @@ import GitHubIssues from '../pages/GitHubIssues/GitHubIssues';
 import PageLoadingSpinner from './ui/PageLoadingSpinner/PageLoadingSpinner';
 import { Suspense } from 'react';
 import WelcomeScreen from '../pages/WelcomeScreen/WelcomeScreen';
-import GovData from '../pages/GovData/GovData';
+import Covid from '../pages/Covid/Covid';
 
 export const links = [
 	{
@@ -18,9 +18,9 @@ export const links = [
 		component: GitHubIssues,
 	},
 	{
-		name: 'GovData',
-		url: '/fetcher/govdata',
-		component: GovData,
+		name: 'Covid',
+		url: '/fetcher/covid',
+		component: Covid,
 	},
 ];
 

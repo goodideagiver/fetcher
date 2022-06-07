@@ -1,11 +1,11 @@
-import AirQuality from './Cards/AirQuality/AirQuality';
+import Covid from './Cards/Covid/Covid';
 import styles from './DataCards.module.css';
 
 const DataCards = () => {
 	return (
 		<ul>
 			<li>
-				<AirQuality/>
+				<Covid/>
 			</li>
 		</ul>
 	);

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import DataCard from '../../../DataCard/DataCard';
-import styles from './AirQuality.module.css';
+import styles from './Covid.module.css';
 import axios from 'axios';
 
 const AirQuality = () => {
