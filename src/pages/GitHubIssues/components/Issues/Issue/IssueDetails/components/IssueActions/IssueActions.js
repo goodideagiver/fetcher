@@ -1,37 +1,11 @@
-import { useDispatch, useSelector } from 'react-redux';
-
 import Button from '../../../../../../../../components/ui/Button/Button';
 import IssueVoteDisplay from './IssueVoteDisplay';
 import classes from './IssueActions.module.css';
-import { issueLikesActions } from '../../../../../../../../store/issue-likes-slice';
-import { useEffect } from 'react';
+import { useIssueActions } from './useIssueActions';
 
 const IssueActions = ({ onClose, issueId }) => {
-	const issueArray = useSelector((state) => state.likedIssues);
-	const likedIssuesArray = useSelector(
-		(state) => state.likedIssues.likedIssues
-	);
-
-	const existingIssue =
-		issueArray &&
-		issueArray.likedIssues.length &&
-		issueArray.likedIssues.find((issue) => issue.id === issueId);
-
-	const issueVotes = existingIssue && existingIssue.likes;
-
-	const dispatch = useDispatch();
-
-	const upvoteIssueHandler = () => {
-		dispatch(issueLikesActions.addLikeToIssue({ issueId }));
-	};
-
-	const downvoteIssueHandler = () => {
-		dispatch(issueLikesActions.removeLikeFromIssue({ issueId }));
-	};
-
-	useEffect(() => {
-		localStorage.setItem('likedIssues', JSON.stringify(likedIssuesArray));
-	}, [issueVotes]);
+	const { issueVotes, upvoteIssueHandler, downvoteIssueHandler } =
+		useIssueActions(issueId);
 
 	return (
 		<div className={classes.actions}>
