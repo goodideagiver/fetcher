@@ -9,7 +9,7 @@ import Repos from './Repos/Repos';
 import { useIssueForm } from './useIssueForm';
 
 const IssueForm = ({ isDataPresent = false }) => {
-	const { repos, loading, error, getUserRepos } = useFetchUserRepos();
+	const { foundUserRepos, loading, error, getUserRepos } = useFetchUserRepos();
 
 	const {
 		repoPickerVisible,
@@ -19,7 +19,7 @@ const IssueForm = ({ isDataPresent = false }) => {
 		searchButtonHandler,
 		pickRepoHandler,
 		inputOwner,
-	} = useIssueForm(repos, getUserRepos);
+	} = useIssueForm(foundUserRepos, getUserRepos);
 
 	return (
 		<>

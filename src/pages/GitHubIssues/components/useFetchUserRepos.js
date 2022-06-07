@@ -30,5 +30,5 @@ export const useFetchUserRepos = () => {
 		setLoading(false);
 	};
 
-	return { repos, loading, error, getUserRepos };
+	return { foundUserRepos: repos, loading, error, getUserRepos };
 };
