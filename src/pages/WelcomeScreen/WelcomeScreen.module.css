@@ -1,22 +1,30 @@
 .title {
-  position: fixed;
-  max-width: 90vw;
-  max-height: 90vh;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 2.5rem;
-  text-align: center;
+	position: fixed;
+  width: min(600px,100%);
+	max-width: 90vw;
+	max-height: 90vh;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 2.5rem;
+	text-align: center;
 
-  animation: reveal 1s both;
+	backdrop-filter: blur(25px);
+	padding: 3rem;
+	border: #80808046 solid 2px;
+	border-radius: 2rem;
+
+  background-color: rgba(255, 255, 255, 0.347);
+
+	animation: reveal 1s both;
 }
 
 @keyframes reveal {
-  0% {
-    opacity: 0;
-  }
+	0% {
+		opacity: 0;
+	}
 
-  100% {
-    opacity: 1;
-  }
+	100% {
+		opacity: 1;
+	}
 }

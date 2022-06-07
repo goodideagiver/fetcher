@@ -26,16 +26,16 @@ const ParticleContainer = () => {
 						color: {
 							value: '#ffffff',
 						},
-						opacity: 0.5,
+						opacity: 1,
 					},
-					fpsLimit: 15,
+					fpsLimit: 60,
 					particles: {
 						color: {
-							value: '#7e7e7e',
+							value: '#000000',
 						},
 						links: {
-							color: '#7e7e7e',
-							distance: 150,
+							color: '#000000',
+							distance: 250,
 							enable: true,
 							opacity: 0.1,
 							width: 1,
@@ -50,7 +50,7 @@ const ParticleContainer = () => {
 								default: 'bounce',
 							},
 							random: false,
-							speed: 0.2,
+							speed: 1.5,
 							straight: false,
 						},
 						number: {
@@ -58,16 +58,16 @@ const ParticleContainer = () => {
 								enable: true,
 								area: 800,
 							},
-							value: 80,
+							value: 20,
 						},
 						opacity: {
-							value: 0.5,
+							value: 1,
 						},
 						shape: {
 							type: 'circle',
 						},
 						size: {
-							value: { min: 1, max: 5 },
+							value: { min: 1, max: 25 },
 						},
 					},
 					detectRetina: true,
