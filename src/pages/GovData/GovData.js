@@ -1,5 +1,11 @@
+import DataCards from './DataCards/DataCards';
+
 const GovData = () => {
-	return <div>GovData</div>;
+	return (
+		<>
+			<DataCards />
+		</>
+	);
 };
 
 export default GovData;
