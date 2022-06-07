@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router';
+import { Redirect, Route, Switch } from 'react-router';
 
 import GitHubIssues from '../pages/GitHubIssues/GitHubIssues';
 import PageLoadingSpinner from './ui/PageLoadingSpinner/PageLoadingSpinner';
@@ -9,8 +9,11 @@ const PagesViewer = () => {
 	return (
 		<Suspense fallback={<PageLoadingSpinner />}>
 			<Switch>
-				<Route exact path='/' component={WelcomeScreen} />
-				<Route exact path='/github' component={GitHubIssues} />
+				<Route exact path='/'>
+					<Redirect to='/fetcher/' />
+				</Route>
+				<Route exact path='/fetcher/' component={WelcomeScreen} />
+				<Route exact path='/fetcher/github' component={GitHubIssues} />
 			</Switch>
 		</Suspense>
 	);

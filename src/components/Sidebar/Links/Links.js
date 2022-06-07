@@ -5,11 +5,11 @@ const Links = () => {
 	const links = [
 		{
 			name: 'Home',
-			url: '/',
+			url: '/fetcher/',
 		},
 		{
 			name: 'Github',
-			url: '/github',
+			url: '/fetcher/github',
 		},
 	];
 
