@@ -13,7 +13,7 @@ export const links = [
 		component: WelcomeScreen,
 	},
 	{
-		name: 'Github',
+		name: 'GitHub issues',
 		url: '/fetcher/github',
 		component: GitHubIssues,
 	},
