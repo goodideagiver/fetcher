@@ -34,11 +34,11 @@ const ParticleContainer = () => {
 						value: '#000000',
 					},
 					links: {
-						color: '#000000',
+						color: '#4c3bae',
 						distance: 250,
 						enable: true,
-						opacity: 0.1,
-						width: 1,
+						opacity: 0.5,
+						width: 2,
 					},
 					collisions: {
 						enable: true,
