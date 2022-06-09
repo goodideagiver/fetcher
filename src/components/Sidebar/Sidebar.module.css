@@ -38,7 +38,6 @@
 }
 
 @supports (backdrop-filter: blur(15px)) {
-
 	.sidebar,
 	.button {
 		--border: 2px solid rgba(0, 0, 0, 0.1);
@@ -52,4 +51,39 @@
 		border-top: var(--border);
 		border-bottom: var(--border);
 	}
+}
+
+@keyframes slideInSidebar {
+	from {
+		transform: translateX(-100%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+
+.sidebarEnter {
+	animation: slideInSidebar 0.5s ease-in-out forwards;
+}
+
+.sidebarExit {
+	animation: slideInSidebar 0.5s ease-in-out reverse forwards;
+}
+
+@keyframes buttonShow {
+	0% {
+		opacity: 1;
+		transform: translateX(-500%);
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.buttonEnter {
+	animation: buttonShow 0.5s ease-in-out forwards;
+}
+
+.buttonExit {
+	animation: buttonShow 0.5s ease-in-out forwards reverse;
 }
