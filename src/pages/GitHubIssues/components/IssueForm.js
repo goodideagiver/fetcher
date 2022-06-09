@@ -39,7 +39,7 @@ const IssueForm = ({ isDataPresent = false }) => {
 				onCancel={repoPickCancelHandler}
 				filteredRepos={filteredRepos}
 				onRepoPick={pickRepoHandler}
-				visible={!!repoPickerVisible}
+				visible={!!repoPickerVisible && !!filteredRepos}
 			/>
 		</>
 	);

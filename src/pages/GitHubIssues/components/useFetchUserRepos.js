@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { API_TOKEN } from '../useFetchIssues';
 
 export const useFetchUserRepos = () => {
 	const [repos, setRepos] = useState(null);
@@ -11,7 +12,7 @@ export const useFetchUserRepos = () => {
 
 	const getUserRepos = async () => {
 		try {
-      setRepos(null);
+			setRepos(null);
 			setLoading(true);
 			setError(null);
 
@@ -19,8 +20,19 @@ export const useFetchUserRepos = () => {
 				throw new Error('Please enter a username');
 			}
 
+			const axiosHeaders = API_TOKEN
+				? {
+						headers: {
+							Authorization: `token ${API_TOKEN}`,
+						},
+				  }
+				: null;
+
 			const data = await axios.get(
-				`https://api.github.com/users/${username}/repos`
+				`https://api.github.com/users/${username}/repos`,
+				{
+					...axiosHeaders,
+				}
 			);
 			setRepos(data.data);
 		} catch (err) {

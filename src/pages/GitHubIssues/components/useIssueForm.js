@@ -7,6 +7,8 @@ import { useEffect } from 'react';
 export const useIssueForm = (repos, getUserRepos) => {
 	const [inputOwner, setInputOwner] = useState('');
 
+	const [modalVisible, setModalVisible] = useState(false);
+
 	const owner = useSelector((state) => state.githubIssues.owner);
 
 	const repoName = useSelector((state) => state.githubIssues.repo);
@@ -38,7 +40,13 @@ export const useIssueForm = (repos, getUserRepos) => {
 		}
 	}, [repoName, owner]);
 
-	const repoPickerVisible = owner && !repoName && !!repos && !!repos.length;
+	useEffect(() => {
+		if (owner && !repoName && !!repos && !!repos.length) {
+			setModalVisible(true);
+		} else if (modalVisible) {
+			setModalVisible(false);
+		}
+	}, [repos, owner, repoName]);
 
 	const filteredRepos = repos && repos.filter((repo) => repo.open_issues_count);
 
@@ -49,12 +57,12 @@ export const useIssueForm = (repos, getUserRepos) => {
 	};
 
 	return {
-		repoPickerVisible,
+		repoPickerVisible: modalVisible,
 		filteredRepos,
 		repoPickCancelHandler,
 		ownerInputHandler,
 		searchButtonHandler,
 		pickRepoHandler,
-    inputOwner
+		inputOwner,
 	};
 };
