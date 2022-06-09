@@ -35,13 +35,12 @@ const IssueForm = ({ isDataPresent = false }) => {
 			</Container>
 			{error && <DisplayError errorMessage={error} />}
 			{loading && <PageLoadingSpinner />}
-			{!!repoPickerVisible && (
-				<Repos
-					onCancel={repoPickCancelHandler}
-					filteredRepos={filteredRepos}
-					onRepoPick={pickRepoHandler}
-				/>
-			)}
+			<Repos
+				onCancel={repoPickCancelHandler}
+				filteredRepos={filteredRepos}
+				onRepoPick={pickRepoHandler}
+				visible={!!repoPickerVisible}
+			/>
 		</>
 	);
 };
