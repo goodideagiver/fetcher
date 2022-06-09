@@ -70,7 +70,7 @@ const useFetchIssues = () => {
 			let data;
 			if (API_TOKEN) {
 				data = await axios.get(
-					`https://api.github.com/repos/facebook/react/issues?page=${newIssuesPage}&per_page=5`,
+					`https://api.github.com/repos/${repoOwner}/${repoName}/issues?page=${newIssuesPage}&per_page=5`,
 					{
 						headers: {
 							Authorization: `token ${API_TOKEN}`,
@@ -79,7 +79,7 @@ const useFetchIssues = () => {
 				);
 			} else {
 				data = await axios.get(
-					`https://api.github.com/repos/facebook/react/issues?page=${newIssuesPage}&per_page=5`
+					`https://api.github.com/repos/${repoOwner}/${repoName}/issues?page=${newIssuesPage}&per_page=5`
 				);
 			}
 

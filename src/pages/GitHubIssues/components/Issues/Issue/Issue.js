@@ -34,21 +34,20 @@ const Issue = ({
 				/>
 				<DateCreatedDisplay date={formattedDate} />
 			</article>
-			{detailsOpen && (
-				<IssueDetails
-					onClose={toggleDetails}
-					data={{
-						id,
-						isPullRequest,
-						title,
-						issueNumber,
-						dateCreated,
-						description,
-						isOpen,
-						url,
-					}}
-				/>
-			)}
+			<IssueDetails
+				visible={detailsOpen}
+				onClose={toggleDetails}
+				data={{
+					id,
+					isPullRequest,
+					title,
+					issueNumber,
+					dateCreated,
+					description,
+					isOpen,
+					url,
+				}}
+			/>
 		</>
 	);
 };

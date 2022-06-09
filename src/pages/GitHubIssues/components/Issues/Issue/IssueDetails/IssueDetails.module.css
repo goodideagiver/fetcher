@@ -1,38 +1,84 @@
 .backdrop {
-  background-color: rgba(0, 0, 0, 0.5);
-  height: 100%;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: var(--modal-bg-index);
-
-  animation: fadeIn 0.3s both;
+	background-color: rgba(0, 0, 0, 0.5);
+	height: 100%;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: var(--modal-bg-index);
 }
 
 .content {
-  animation: fadeIn 0.3s both;
-  background-color: white;
-  border-radius: 1rem;
-  box-shadow: var(--base-shadow);
-  display: flex;
-  flex-direction: column;
-  left: 50%;
-  max-height: 95%;
-  max-width: 1000px;
-  overflow: hidden;
-  position: fixed;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 95%;
-  z-index: var(--modal-content-index);
+	background-color: white;
+	border-radius: 1rem;
+	box-shadow: var(--base-shadow);
+	display: flex;
+	flex-direction: column;
+	left: 50%;
+	max-height: 95%;
+	max-width: 1000px;
+	overflow: hidden;
+	position: fixed;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 95%;
+	z-index: var(--modal-content-index);
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.windowEnter {
+	animation: windowEnter 0.3s ease-in-out;
+}
+
+.windowExit {
+	animation: windowExit 0.3s ease-in-out;
+}
+
+@keyframes windowEnter {
+	0% {
+		opacity: 0;
+		transform: translate(-50%, -50%) scale(0.9);
+	}
+	100% {
+		opacity: 1;
+		transform: translate(-50%, -50%) scale(1);
+	}
+}
+
+@keyframes windowExit {
+	from {
+		opacity: 1;
+		transform: translate(-50%, -50%) scale(1);
+	}
+	to {
+		opacity: 0;
+		transform: translate(-50%, -50%) scale(0.9);
+	}
+}
+
+.backdropEnter {
+	animation: backdropEnter 0.3s ease-in-out forwards; 
+}
+
+.backdropExit {
+	animation: backdropExit 0.3s ease-in-out forwards;
+}
+
+@keyframes backdropEnter {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes backdropExit {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+	}
 }
