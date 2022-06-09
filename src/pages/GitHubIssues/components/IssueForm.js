@@ -5,8 +5,28 @@ import classes from './IssueForm.module.css';
 import { useFetchUserRepos } from './useFetchUserRepos';
 import PageLoadingSpinner from '../../../components/ui/PageLoadingSpinner/PageLoadingSpinner';
 import DisplayError from './DisplayError/DisplayError';
-import Repos from './Repos/Repos';
+import RepoPickerModal from './Repos/Repos';
 import { useIssueForm } from './useIssueForm';
+
+const IssueFormContent = ({
+	searchButtonHandler,
+	ownerInputHandler,
+	inputOwner,
+	isDataPresent,
+}) => {
+	return (
+		<Container maxW='800px'>
+			<form onSubmit={searchButtonHandler} className={classes.form}>
+				<FormInputs
+					onOwnerInput={ownerInputHandler}
+					ownerValue={inputOwner}
+					isDataPresent={isDataPresent}
+				/>
+				<Button>Search</Button>
+			</form>
+		</Container>
+	);
+};
 
 const IssueForm = ({ isDataPresent = false }) => {
 	const { foundUserRepos, loading, error, getUserRepos } = useFetchUserRepos();
@@ -23,19 +43,15 @@ const IssueForm = ({ isDataPresent = false }) => {
 
 	return (
 		<>
-			<Container maxW='800px'>
-				<form onSubmit={searchButtonHandler} className={classes.form}>
-					<FormInputs
-						onOwnerInput={ownerInputHandler}
-						ownerValue={inputOwner}
-						isDataPresent={isDataPresent}
-					/>
-					<Button>Search</Button>
-				</form>
-			</Container>
+			<IssueFormContent
+				searchButtonHandler={searchButtonHandler}
+				ownerInputHandler={ownerInputHandler}
+				inputOwner={inputOwner}
+				isDataPresent={isDataPresent}
+			/>
 			{error && <DisplayError errorMessage={error} />}
 			{loading && <PageLoadingSpinner />}
-			<Repos
+			<RepoPickerModal
 				onCancel={repoPickCancelHandler}
 				filteredRepos={filteredRepos}
 				onRepoPick={pickRepoHandler}
