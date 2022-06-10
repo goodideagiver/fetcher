@@ -205,10 +205,9 @@ body, #app {
 .Lzcq_W_root {
   width: 100%;
   height: 100%;
-  z-index: var(--modal-bg-index);
-  background-color: #0000009a;
+  z-index: var(--modal-content-index);
+  pointer-events: none;
   place-items: center;
-  animation: Lzcq_W_fadeIn .3s both;
   display: grid;
   position: fixed;
   top: 0;
@@ -216,7 +215,18 @@ body, #app {
   overflow: hidden;
 }
 
+.Lzcq_W_backdrop {
+  width: 100%;
+  height: 100%;
+  z-index: var(--modal-bg-index);
+  background-color: #0000009a;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 .Lzcq_W_container {
+  pointer-events: all;
   z-index: var(--modal-content-index);
   width: 90%;
   max-width: 800px;
@@ -240,6 +250,34 @@ body, #app {
 
   to {
     opacity: 1;
+  }
+}
+
+.Lzcq_W_backdropEnter {
+  animation: Lzcq_W_fadeIn .5s ease-in-out forwards;
+}
+
+.Lzcq_W_backdropExit {
+  animation: Lzcq_W_fadeIn .5s ease-in-out reverse forwards;
+}
+
+.Lzcq_W_contentEnter {
+  animation: Lzcq_W_contentAnimation .5s ease-in-out forwards;
+}
+
+.Lzcq_W_contentExit {
+  animation: Lzcq_W_contentAnimation .5s ease-in-out reverse forwards;
+}
+
+@keyframes Lzcq_W_contentAnimation {
+  from {
+    opacity: 0;
+    transform: scale(.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -481,7 +519,6 @@ body, #app {
   width: 100%;
   z-index: var(--modal-bg-index);
   background-color: #00000080;
-  animation: VoHVTW_fadeIn .3s both;
   position: fixed;
   top: 0;
   left: 0;
@@ -496,7 +533,6 @@ body, #app {
   background-color: #fff;
   border-radius: 1rem;
   flex-direction: column;
-  animation: VoHVTW_fadeIn .3s both;
   display: flex;
   position: fixed;
   top: 50%;
@@ -505,13 +541,63 @@ body, #app {
   transform: translate(-50%, -50%);
 }
 
-@keyframes VoHVTW_fadeIn {
+.VoHVTW_windowEnter {
+  animation: VoHVTW_windowEnter .3s ease-in-out;
+}
+
+.VoHVTW_windowExit {
+  animation: VoHVTW_windowExit .3s ease-in-out;
+}
+
+@keyframes VoHVTW_windowEnter {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%)scale(.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%)scale(1);
+  }
+}
+
+@keyframes VoHVTW_windowExit {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%)scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%)scale(.9);
+  }
+}
+
+.VoHVTW_backdropEnter {
+  animation: VoHVTW_backdropEnter .3s ease-in-out forwards;
+}
+
+.VoHVTW_backdropExit {
+  animation: VoHVTW_backdropExit .3s ease-in-out forwards;
+}
+
+@keyframes VoHVTW_backdropEnter {
   from {
     opacity: 0;
   }
 
   to {
     opacity: 1;
+  }
+}
+
+@keyframes VoHVTW_backdropExit {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
   }
 }
 
@@ -632,6 +718,43 @@ body, #app {
     border-top: var(--border);
     border-bottom: var(--border);
   }
+}
+
+@keyframes Tfy6XW_slideInSidebar {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.Tfy6XW_sidebarEnter {
+  animation: Tfy6XW_slideInSidebar .5s ease-in-out forwards;
+}
+
+.Tfy6XW_sidebarExit {
+  animation: Tfy6XW_slideInSidebar .5s ease-in-out reverse forwards;
+}
+
+@keyframes Tfy6XW_buttonShow {
+  0% {
+    opacity: 1;
+    transform: translateX(-500%);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.Tfy6XW_buttonEnter {
+  animation: Tfy6XW_buttonShow .5s ease-in-out forwards;
+}
+
+.Tfy6XW_buttonExit {
+  animation: Tfy6XW_buttonShow .5s ease-in-out reverse forwards;
 }
 
 ._1AEtCG_root {
