@@ -49,19 +49,19 @@
 }
 
 .backdropEnter {
-	animation: fadeIn 500ms ease-in-out forwards;
+	animation: fadeIn 150ms ease-in-out forwards;
 }
 
 .backdropExit {
-	animation: reverse fadeIn 500ms ease-in-out forwards;
+	animation: reverse fadeIn 150ms ease-in-out forwards;
 }
 
 .contentEnter {
-	animation: contentAnimation 500ms ease-in-out forwards;
+	animation: contentAnimation 150ms ease-in-out forwards;
 }
 
 .contentExit {
-	animation: reverse contentAnimation 500ms ease-in-out forwards;
+	animation: reverse contentAnimation 150ms ease-in-out forwards;
 }
 
 @keyframes contentAnimation {

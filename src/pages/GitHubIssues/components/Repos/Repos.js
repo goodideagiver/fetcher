@@ -29,7 +29,7 @@ const Repos = ({ filteredRepos, onRepoPick, onCancel, visible = false }) => {
 			<CSSTransition
 				mountOnEnter
 				unmountOnExit
-				timeout={500}
+				timeout={150}
 				in={visible}
 				classNames={{
 					enter: styles.contentEnter,
@@ -45,7 +45,7 @@ const Repos = ({ filteredRepos, onRepoPick, onCancel, visible = false }) => {
 			<CSSTransition
 				mountOnEnter
 				unmountOnExit
-				timeout={500}
+				timeout={150}
 				in={visible}
 				classNames={{
 					enter: styles.backdropEnter,

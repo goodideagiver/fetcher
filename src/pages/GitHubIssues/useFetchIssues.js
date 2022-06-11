@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const NEXT_PAGE_INCREMENT = 1;
 const INITIAL_NEXT_PAGE = 2;
 const INITIAL_ISSUES_COUNT = 5;
-export const API_TOKEN = ''; //for testing purposes (development)
+export const API_TOKEN = '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'; //for testing purposes (development)
 
 const useFetchIssues = () => {
 	const [isLoading, setIsLoading] = useState(false);

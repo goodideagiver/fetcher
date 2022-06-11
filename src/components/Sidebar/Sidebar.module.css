@@ -63,11 +63,11 @@
 }
 
 .sidebarEnter {
-	animation: slideInSidebar 0.5s ease-in-out forwards;
+	animation: slideInSidebar 0.2s ease-in-out forwards;
 }
 
 .sidebarExit {
-	animation: slideInSidebar 0.5s ease-in-out reverse forwards;
+	animation: slideInSidebar 0.2s ease-in-out reverse forwards;
 }
 
 @keyframes buttonShow {
@@ -81,9 +81,9 @@
 }
 
 .buttonEnter {
-	animation: buttonShow 0.5s ease-in-out forwards;
+	animation: buttonShow 0.2s ease-in-out forwards;
 }
 
 .buttonExit {
-	animation: buttonShow 0.5s ease-in-out forwards reverse;
+	animation: buttonShow 0.2s ease-in-out forwards reverse;
 }

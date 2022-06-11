@@ -37,8 +37,8 @@ const DetailsContainer = ({
 );
 
 const CSS_TRANSITION_TIMEOUTS = {
-	enter: 300,
-	exit: 300,
+	enter: 100,
+	exit: 100,
 };
 
 const IssueDetails = ({ data, onClose, visible = false }) => {

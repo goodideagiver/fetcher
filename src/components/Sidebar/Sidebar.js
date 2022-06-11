@@ -12,7 +12,7 @@ const AnimatedSidebar = ({ visible }) => {
 			mountOnEnter
 			unmountOnExit
 			in={visible}
-			timeout={500}
+			timeout={200}
 			classNames={{
 				enter: styles.sidebarEnter,
 				exit: styles.sidebarExit,
@@ -28,7 +28,7 @@ const AnimatedSidebar = ({ visible }) => {
 const AnimatedSidebarToggleButton = ({ toggleSidebar, visible }) => (
 	<CSSTransition
 		in={visible}
-		timeout={500}
+		timeout={200}
 		classNames={{
 			enterActive: styles.buttonEnter,
 			exit: styles.buttonExit,
