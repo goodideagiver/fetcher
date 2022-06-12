@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { links } from '../../PagesViewer';
 import styles from './Links.module.css';
+import { links } from '../../../assets/js/routes';
 
 const Links = () => {
 	return (
