@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { API_TOKEN } from '../useFetchIssues';
+import { API_TOKEN } from '../../../assets/js/API_TOKEN'; 
 
 export const useFetchUserRepos = () => {
 	const [repos, setRepos] = useState(null);
