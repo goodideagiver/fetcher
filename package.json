@@ -4,8 +4,8 @@
   "description": "Fetching from many APIs app",
   "scripts": {
     "start": "parcel src/index.html",
-    "build": "parcel build src/index.html --dist-dir dist --public-url . --no-source-maps",
-    "deploy": "npm run build && gh-pages -d dist"
+    "build": "parcel build src/index.html --dist-dir prod --public-url . --no-source-maps",
+    "deploy": "npm run build && gh-pages -d prod"
   },
   "author": "Purple Black",
   "license": "ISC",
