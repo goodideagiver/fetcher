@@ -3,8 +3,13 @@ import ReactDOM from 'react-dom';
 import ReposList from './ReposList/ReposList';
 import RepoPickerHeader from './RepoPickerHeader/RepoPickerHeader';
 import { CSSTransition } from 'react-transition-group';
+import { useKeyAction } from '../../../../hooks/useKeyAction';
+
+const ESC_KEY_CODE = 27;
 
 const ReposContent = ({ filteredRepos, onRepoPick, onCancel }) => {
+	useKeyAction(ESC_KEY_CODE, onCancel);
+
 	return ReactDOM.createPortal(
 		<div className={styles.root}>
 			<div className={styles.container}>
