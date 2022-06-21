@@ -28,6 +28,7 @@ const DetailsContainer = ({
 			isOpen={isOpen}
 		/>
 		<IssueContent
+			title={title}
 			description={description}
 			url={url}
 			dateCreated={dateCreated}
