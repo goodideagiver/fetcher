@@ -4,11 +4,13 @@ import classes from './IssueActions.module.css';
 import { useIssueActions } from './useIssueActions';
 import { useKeyAction } from '../../../../../../../../hooks/useKeyAction';
 
+const ESC_KEY_CODE = 27;
+
 const IssueActions = ({ onClose, issueId }) => {
 	const { issueVotes, upvoteIssueHandler, downvoteIssueHandler } =
 		useIssueActions(issueId);
 
-	useKeyAction(27, onClose);
+	useKeyAction(ESC_KEY_CODE, onClose);
 
 	return (
 		<div className={classes.actions}>
