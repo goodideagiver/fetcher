@@ -26,6 +26,7 @@
     "react-redux": "^8.0.2",
     "react-router": "^5.3.3",
     "react-router-dom": "^5.3.3",
+    "react-tooltip": "^4.2.21",
     "react-transition-group": "^4.4.2",
     "react-tsparticles": "^2.0.6",
     "redux": "^4.2.0",
