@@ -5,6 +5,10 @@
 }
 
 .scrollable-container {
-  padding: 0 1rem;
-  overflow-y: auto;
+	padding: 0 1rem;
+	overflow-y: auto;
+}
+
+.scrollComponent {
+	min-height: 101vh;
 }
