@@ -5,21 +5,15 @@ import RepoPickerHeader from './RepoPickerHeader/RepoPickerHeader';
 import { CSSTransition } from 'react-transition-group';
 import { useKeyAction } from '../../../../hooks/useKeyAction';
 import SearchRepo from './SearchRepo/SearchRepo';
-import { useState } from 'react';
+import { useFilterRepos } from './useFilterRepos';
 
 const ESC_KEY_CODE = 27;
 
 const ReposContent = ({ filteredRepos, onRepoPick, onCancel }) => {
 	useKeyAction(ESC_KEY_CODE, onCancel);
 
-	const [reposFilterName, setreposFilterName] = useState('');
-
-	let reposToDisplay = filteredRepos;
-	if (reposFilterName) {
-		reposToDisplay = filteredRepos.filter((repo) => {
-			return repo.name.toLowerCase().includes(reposFilterName.toLowerCase());
-		});
-	}
+	const { reposToDisplay, setreposFilterName, reposFilterName } =
+		useFilterRepos(filteredRepos);
 
 	return ReactDOM.createPortal(
 		<div className={styles.root}>
