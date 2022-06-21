@@ -52,6 +52,7 @@ const IssueDetails = ({ data, onClose, visible = false }) => {
 				classNames={{
 					enter: classes.windowEnter,
 					exit: classes.windowExit,
+					exitDone: classes.exitDone,
 				}}
 			>
 				<DetailsContainer onClose={onClose} {...data} />
@@ -64,6 +65,7 @@ const IssueDetails = ({ data, onClose, visible = false }) => {
 				classNames={{
 					enter: classes.backdropEnter,
 					exit: classes.backdropExit,
+					exitDone: classes.exitDone,
 				}}
 			>
 				<Backdrop onClose={onClose} />
