@@ -57,11 +57,11 @@
 }
 
 .contentEnter {
-	animation: contentAnimation 150ms ease-in-out forwards;
+	animation: contentAnimation 150ms ease-in-out both;
 }
 
 .contentExit {
-	animation: reverse contentAnimation 150ms ease-in-out forwards;
+	animation: reverse contentAnimation 150ms ease-in-out both;
 }
 
 @keyframes contentAnimation {
