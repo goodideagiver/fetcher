@@ -37,37 +37,53 @@ const ReposBackdrop = ({ onCancel }) => {
 	);
 };
 
+const AnimatedReposContent = (props) => (
+	<CSSTransition
+		mountOnEnter
+		unmountOnExit
+		timeout={150}
+		in={props.visible}
+		classNames={{
+			enter: styles.contentEnter,
+			exit: styles.contentExit,
+		}}
+	>
+		<ReposContent
+			filteredRepos={props.filteredRepos}
+			onRepoPick={props.onRepoPick}
+			onCancel={props.onCancel}
+		/>
+	</CSSTransition>
+);
+
+const AnimatedReposBackdrop = (props) => (
+	<CSSTransition
+		mountOnEnter
+		unmountOnExit
+		timeout={150}
+		in={props.visible}
+		classNames={{
+			enter: styles.backdropEnter,
+			exit: styles.backdropExit,
+		}}
+	>
+		<ReposBackdrop onCancel={props.onCancel} />
+	</CSSTransition>
+);
+
 const Repos = ({ filteredRepos, onRepoPick, onCancel, visible = false }) => {
 	return (
 		<>
-			<CSSTransition
-				mountOnEnter
-				unmountOnExit
-				timeout={150}
-				in={visible}
-				classNames={{
-					enter: styles.contentEnter,
-					exit: styles.contentExit,
-				}}
-			>
-				<ReposContent
-					filteredRepos={filteredRepos}
-					onRepoPick={onRepoPick}
-					onCancel={onCancel}
-				/>
-			</CSSTransition>
-			<CSSTransition
-				mountOnEnter
-				unmountOnExit
-				timeout={150}
-				in={visible}
-				classNames={{
-					enter: styles.backdropEnter,
-					exit: styles.backdropExit,
-				}}
-			>
-				<ReposBackdrop onCancel={onCancel} />
-			</CSSTransition>
+			<AnimatedReposContent
+				filteredRepos={filteredRepos}
+				onRepoPick={onRepoPick}
+				onCancel={onCancel}
+				visible={visible}
+			></AnimatedReposContent>
+			<AnimatedReposBackdrop
+				visible={visible}
+				onCancel={onCancel}
+			></AnimatedReposBackdrop>
 		</>
 	);
 };
