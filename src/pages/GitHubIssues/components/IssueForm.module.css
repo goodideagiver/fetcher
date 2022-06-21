@@ -1,6 +1,12 @@
 .form {
-  display: flex;
-  padding: 1rem;
-  gap: 1rem;
-  align-items: flex-end;
+	display: flex;
+	padding: 1rem;
+	gap: 1rem;
+	align-items: flex-end;
+}
+
+@media screen and (max-width: 600px) {
+  .form {
+    flex-direction: column;
+  }
 }
