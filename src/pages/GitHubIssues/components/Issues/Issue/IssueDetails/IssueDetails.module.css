@@ -26,11 +26,11 @@
 }
 
 .windowEnter {
-	animation: windowEnter 0.1s ease-in-out;
+	animation: windowEnter 0.1s ease-in-out both;
 }
 
 .windowExit {
-	animation: windowExit 0.1s ease-in-out;
+	animation: windowExit 0.1s ease-in-out both;
 }
 
 @keyframes windowEnter {
@@ -56,11 +56,16 @@
 }
 
 .backdropEnter {
-	animation: backdropEnter 0.1s ease-in-out forwards; 
+	animation: backdropEnter 0.1s ease-in-out both;
 }
 
 .backdropExit {
-	animation: backdropExit 0.1s ease-in-out forwards;
+	animation: backdropExit 0.1s ease-in-out both;
+}
+
+.exitDone {
+	display: none;
+	opacity: 0;
 }
 
 @keyframes backdropEnter {
