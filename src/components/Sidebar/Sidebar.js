@@ -25,20 +25,33 @@ const AnimatedSidebar = ({ visible }) => {
 	);
 };
 
-const AnimatedSidebarToggleButton = ({ toggleSidebar, visible }) => (
-	<CSSTransition
-		in={visible}
-		timeout={200}
-		classNames={{
-			enterActive: styles.buttonEnter,
-			exit: styles.buttonExit,
-		}}
-	>
-		<button onClick={toggleSidebar} className={styles.button}>
-			{visible ? <AiOutlineLeft /> : <AiOutlineRight />}
-		</button>
-	</CSSTransition>
-);
+const AnimatedSidebarToggleButton = ({ toggleSidebar, visible }) => {
+	const [clicked, setClicked] = useState(false);
+
+	const buttonClasses = `${styles.button} ${
+		clicked ? '' : styles.callToAction
+	}`;
+
+	const buttonClickHandler = () => {
+		setClicked(true);
+		toggleSidebar();
+	};
+
+	return (
+		<CSSTransition
+			in={visible}
+			timeout={200}
+			classNames={{
+				enterActive: styles.buttonEnter,
+				exit: styles.buttonExit,
+			}}
+		>
+			<button onClick={buttonClickHandler} className={buttonClasses}>
+				{visible ? <AiOutlineLeft /> : <AiOutlineRight />}
+			</button>
+		</CSSTransition>
+	);
+};
 
 const Sidebar = () => {
 	const [isOpen, setIsOpen] = useState(false);
