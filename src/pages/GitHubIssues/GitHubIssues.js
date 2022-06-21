@@ -16,12 +16,15 @@ const GitHubIssues = () => {
 	return (
 		<div className={classes['issues-wrapper']}>
 			<header>
-				<IssueForm isDataPresent={!!formattedIssues && !!formattedIssues.length} />
+				<IssueForm
+					isDataPresent={!!formattedIssues && !!formattedIssues.length}
+				/>
 			</header>
 			{error && <DisplayError errorMessage={error} />}
 			{formattedIssues && !error && issuesData && issuesData.length ? (
 				<div id='scrollContainer' className={classes['scrollable-container']}>
 					<InfiniteScroll
+						className={classes.scrollComponent}
 						dataLength={issuesData.length}
 						next={getMoreIssues}
 						hasMore={true}
@@ -31,7 +34,9 @@ const GitHubIssues = () => {
 					</InfiniteScroll>
 					{isLoading && <PageLoadingSpinner />}
 				</div>
-			) : <DisplayError errorMessage='No issues found'/>}
+			) : (
+				<DisplayError errorMessage='No issues found' />
+			)}
 		</div>
 	);
 };
