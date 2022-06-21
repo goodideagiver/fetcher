@@ -1,0 +1,21 @@
+.form {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding: 1rem;
+	flex-wrap: wrap;
+}
+
+.label {
+	white-space: nowrap;
+}
+
+.input {
+	flex-basis: 250px;
+	flex-grow: 2;
+}
+
+.button {
+  flex-grow: 1;
+}
+
