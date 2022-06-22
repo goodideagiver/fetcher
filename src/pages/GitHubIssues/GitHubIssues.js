@@ -10,8 +10,16 @@ import { useLocalStorage } from './useLocalStorage';
 const GitHubIssues = () => {
 	useLocalStorage(); //loads saved liked issues from local storage
 
-	const { error, getMoreIssues, isLoading, formattedIssues, issuesData } =
-		useFetchIssues();
+	const {
+		error,
+		getMoreIssues,
+		isLoading,
+		formattedIssues,
+		issuesData,
+		hasMoreIssues,
+	} = useFetchIssues();
+
+	const scrollComponentCss = hasMoreIssues ? classes.scrollComponent : '';
 
 	return (
 		<div className={classes['issues-wrapper']}>
@@ -24,10 +32,10 @@ const GitHubIssues = () => {
 			{formattedIssues && !error && issuesData && issuesData.length ? (
 				<div id='scrollContainer' className={classes['scrollable-container']}>
 					<InfiniteScroll
-						className={classes.scrollComponent}
+						className={scrollComponentCss}
 						dataLength={issuesData.length}
 						next={getMoreIssues}
-						hasMore={true}
+						hasMore={hasMoreIssues}
 						scrollableTarget='scrollContainer'
 					>
 						<Issues issuesList={formattedIssues} />
