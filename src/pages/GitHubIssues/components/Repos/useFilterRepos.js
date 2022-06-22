@@ -6,7 +6,7 @@ export const useFilterRepos = (filteredRepos) => {
 	let reposToDisplay = filteredRepos;
 	if (reposFilterName) {
 		reposToDisplay = filteredRepos.filter((repo) => {
-			return repo.name.toLowerCase().includes(reposFilterName.toLowerCase());
+			return repo.name.toLowerCase().includes(reposFilterName.trim().toLowerCase());
 		});
 	}
 

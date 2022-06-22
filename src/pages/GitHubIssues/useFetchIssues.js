@@ -114,7 +114,7 @@ const useFetchIssues = () => {
 
 		if (filter) {
 			formattedIssues = formattedIssues.filter((issue) => {
-				return issue.title.toLowerCase().includes(filter.toLowerCase());
+				return issue.title.toLowerCase().includes(filter.toLowerCase().trim());
 			});
 		}
 	}
