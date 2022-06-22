@@ -21,7 +21,6 @@ const FormActions = ({ onVisibilityChange, formVisible }) => {
 	return (
 		<div className={classes.actions}>
 			<Button onClick={visibilityToggleHandler}>{visibilityButtonText}</Button>
-			{formVisible && <Button type='submit'>Search</Button>}
 		</div>
 	);
 };
@@ -54,6 +53,7 @@ const IssueFormContent = ({
 						ownerValue={inputOwner}
 						isDataPresent={isDataPresent}
 					/>
+					<Button type='submit'>Search</Button>
 				</form>
 			</CSSTransition>
 			<FormActions onVisibilityChange={setIsVisible} formVisible={isVisible} />

@@ -46,7 +46,6 @@ const FormInputs = ({
 					type='text'
 				/>
 			</FormControl>
-
 			<FormControl isDisabled={!isFilterable}>
 				<FormLabel htmlFor='filter-name'>{filterLabelContent}</FormLabel>
 				<Input onInput={handleInputFilterValue} id='filter-name' type='text' />

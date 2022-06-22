@@ -2,7 +2,6 @@
 	display: flex;
 	gap: 1rem;
 	align-items: flex-end;
-	overflow: hidden;
 	transform-origin: top;
 }
 
