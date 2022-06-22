@@ -13,6 +13,7 @@ const useFetchIssues = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
 	const [newIssuesPage, setNewIssuesPage] = useState(INITIAL_NEXT_PAGE);
+	const [hasMoreIssues, setHasMoreIssues] = useState(true);
 
 	const issuesData = useSelector((state) => state.githubIssues.issuesList);
 	const repoOwner = useSelector((state) => state.githubIssues.owner);
@@ -44,6 +45,9 @@ const useFetchIssues = () => {
 						);
 					}
 					dispatch(githubIssuesActions.setGitHubIssues(data.data));
+					if (data.data.length < INITIAL_ISSUES_COUNT) {
+						setHasMoreIssues(false);
+					}
 					setError(null);
 				} catch (error) {
 					if (
@@ -84,6 +88,9 @@ const useFetchIssues = () => {
 			}
 
 			dispatch(githubIssuesActions.addGivenGitHubIssue(data.data));
+			if (data.data.length < INITIAL_ISSUES_COUNT) {
+				setHasMoreIssues(false);
+			}
 			setNewIssuesPage(newIssuesPage + NEXT_PAGE_INCREMENT);
 		} catch (error) {
 			setError(error.response.data.message);
@@ -120,6 +127,7 @@ const useFetchIssues = () => {
 		repoOwner,
 		repoName,
 		issuesData,
+		hasMoreIssues,
 	};
 };
 
