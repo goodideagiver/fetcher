@@ -14,7 +14,7 @@ export const links = [
 		component: GitHubIssues,
 	},
 	{
-		name: 'Covid',
+		name: 'Covid (not finished yet)',
 		url: '/fetcher/covid',
 		component: Covid,
 	},
