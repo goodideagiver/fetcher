@@ -1,6 +1,5 @@
 .form {
 	display: flex;
-	padding: 1rem;
 	gap: 1rem;
 	align-items: flex-end;
 	overflow: hidden;
@@ -12,7 +11,7 @@
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
-	padding: 1rem;
+	padding: 1rem 0;
 }
 
 @media screen and (max-width: 600px) {
