@@ -3,11 +3,37 @@
 	padding: 1rem;
 	gap: 1rem;
 	align-items: flex-end;
+	overflow: hidden;
+	transform-origin: top;
+}
+
+.actions {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	padding: 1rem;
 }
 
 @media screen and (max-width: 600px) {
-  .form {
-    flex-direction: column;
-  }
+	.form {
+		flex-direction: column;
+	}
 }
 
+@keyframes formToggleAnimation {
+	from {
+		transform: scaleY(0);
+	}
+	to {
+		transform: scaleY(1);
+	}
+}
+
+.formEnter {
+	animation: formToggleAnimation 0.2s both;
+}
+
+.formExit {
+	animation: formToggleAnimation 0.2s both reverse;
+}

@@ -7,6 +7,24 @@ import PageLoadingSpinner from '../../../components/ui/PageLoadingSpinner/PageLo
 import DisplayError from './DisplayError/DisplayError';
 import RepoPickerModal from './Repos/Repos';
 import { useIssueForm } from './useIssueForm';
+import { useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
+
+const FormActions = ({ onVisibilityChange, formVisible }) => {
+	const visibilityToggleHandler = (event) => {
+		event.preventDefault();
+		onVisibilityChange((state) => !state);
+	};
+
+	const visibilityButtonText = formVisible ? 'Hide form' : 'Show form';
+
+	return (
+		<div className={classes.actions}>
+			<Button onClick={visibilityToggleHandler}>{visibilityButtonText}</Button>
+			{formVisible && <Button type='submit'>Search</Button>}
+		</div>
+	);
+};
 
 const IssueFormContent = ({
 	searchButtonHandler,
@@ -15,17 +33,30 @@ const IssueFormContent = ({
 	isDataPresent,
 	inputError,
 }) => {
+	const [isVisible, setIsVisible] = useState(true);
+
 	return (
 		<Container maxW='800px'>
-			<form onSubmit={searchButtonHandler} className={classes.form}>
-				<FormInputs
-					repoOwnerInputError={inputError}
-					onOwnerInput={ownerInputHandler}
-					ownerValue={inputOwner}
-					isDataPresent={isDataPresent}
-				/>
-				<Button>Search</Button>
-			</form>
+			<CSSTransition
+				mountOnEnter
+				unmountOnExit
+				in={isVisible}
+				timeout={200}
+				classNames={{
+					enter: classes.formEnter,
+					exit: classes.formExit,
+				}}
+			>
+				<form onSubmit={searchButtonHandler} className={classes.form}>
+					<FormInputs
+						repoOwnerInputError={inputError}
+						onOwnerInput={ownerInputHandler}
+						ownerValue={inputOwner}
+						isDataPresent={isDataPresent}
+					/>
+				</form>
+			</CSSTransition>
+			<FormActions onVisibilityChange={setIsVisible} formVisible={isVisible} />
 		</Container>
 	);
 };
