@@ -13,11 +13,13 @@ const IssueFormContent = ({
 	ownerInputHandler,
 	inputOwner,
 	isDataPresent,
+	inputError,
 }) => {
 	return (
 		<Container maxW='800px'>
 			<form onSubmit={searchButtonHandler} className={classes.form}>
 				<FormInputs
+					repoOwnerInputError={inputError}
 					onOwnerInput={ownerInputHandler}
 					ownerValue={inputOwner}
 					isDataPresent={isDataPresent}
@@ -39,11 +41,13 @@ const IssueForm = ({ isDataPresent = false }) => {
 		searchButtonHandler,
 		pickRepoHandler,
 		inputOwner,
+		inputError,
 	} = useIssueForm(foundUserRepos, getUserRepos);
 
 	return (
 		<>
 			<IssueFormContent
+				inputError={inputError}
 				searchButtonHandler={searchButtonHandler}
 				ownerInputHandler={ownerInputHandler}
 				inputOwner={inputOwner}

@@ -9,6 +9,8 @@ export const useIssueForm = (repos, getUserRepos) => {
 
 	const [modalVisible, setModalVisible] = useState(false);
 
+	const [inputError, setInputError] = useState(false);
+
 	const owner = useSelector((state) => state.githubIssues.owner);
 
 	const repoName = useSelector((state) => state.githubIssues.repo);
@@ -16,6 +18,7 @@ export const useIssueForm = (repos, getUserRepos) => {
 	const dispatch = useDispatch();
 
 	const ownerInputHandler = (event) => {
+		setInputError(false);
 		setInputOwner(event.target.value);
 	};
 
@@ -26,11 +29,13 @@ export const useIssueForm = (repos, getUserRepos) => {
 	const searchButtonHandler = (event) => {
 		event.preventDefault();
 
-		if (inputOwner) {
+		if (inputOwner && inputOwner.trim().length >= 3) {
 			dispatch(githubIssuesActions.setRepoName(''));
 			dispatch(githubIssuesActions.setGitHubIssues(null));
 			dispatch(githubIssuesActions.setOwner(inputOwner));
 			setInputOwner('');
+		} else {
+			setInputError(true);
 		}
 	};
 
@@ -64,5 +69,6 @@ export const useIssueForm = (repos, getUserRepos) => {
 		searchButtonHandler,
 		pickRepoHandler,
 		inputOwner,
+		inputError,
 	};
 };
