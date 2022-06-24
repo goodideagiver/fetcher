@@ -8,16 +8,13 @@ const ParticleContainer = () => {
 		await loadFull(main);
 	};
 
-	const particlesLoaded = (container) => {
-		console.log(container);
-	};
+
 
 	return (
 		<Particles
 			className={styles.root}
 			id='tsparticles'
 			init={particlesInit}
-			loaded={particlesLoaded}
 			options={{
 				style: {
 					position: 'static',
