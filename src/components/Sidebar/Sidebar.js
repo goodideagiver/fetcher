@@ -53,19 +53,26 @@ const AnimatedSidebarToggleButton = ({ toggleSidebar, visible }) => {
 	);
 };
 
+const Backdrop = ({ toggleSidebar }) => (
+	<div onClick={toggleSidebar} className={styles.sidebarBackdrop} />
+);
+
 const Sidebar = () => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const toggleSidebarHandler = () => setIsOpen(!isOpen);
 
 	return ReactDOM.createPortal(
-		<div className={styles.wrapper}>
-			<AnimatedSidebar visible={isOpen} />
-			<AnimatedSidebarToggleButton
-				visible={isOpen}
-				toggleSidebar={toggleSidebarHandler}
-			></AnimatedSidebarToggleButton>
-		</div>,
+		<>
+			<div className={styles.wrapper}>
+				<AnimatedSidebar visible={isOpen} />
+				<AnimatedSidebarToggleButton
+					visible={isOpen}
+					toggleSidebar={toggleSidebarHandler}
+				></AnimatedSidebarToggleButton>
+			</div>
+			{isOpen && <Backdrop toggleSidebar={toggleSidebarHandler} />}
+		</>,
 		document.getElementById('overlay-root')
 	);
 };

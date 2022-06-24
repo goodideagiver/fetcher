@@ -42,7 +42,7 @@
 	.button {
 		--border: 2px solid rgba(0, 0, 0, 0.1);
 		backdrop-filter: blur(15px);
-		background-color: transparent;
+		background-color: rgba(255, 255, 255, 0.523);
 		box-shadow: none;
 		border-right: var(--border);
 	}
@@ -103,4 +103,25 @@
 
 .callToAction {
 	animation: glow 2s ease-in-out infinite;
+}
+
+.sidebarBackdrop {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 9;
+	background-color: rgba(247, 247, 247, 0.435);
+	top: 0;
+	left: 0;
+	backdrop-filter: blur(5px);
+	animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
