@@ -8,8 +8,6 @@ const ParticleContainer = () => {
 		await loadFull(main);
 	};
 
-
-
 	return (
 		<Particles
 			className={styles.root}
