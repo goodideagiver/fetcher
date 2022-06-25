@@ -26,7 +26,6 @@ const useFetchIssues = () => {
 
 	useEffect(() => {
 		if ((!issuesData || !issuesData.issuesList) && repoOwner && repoName) {
-			hasMoreIssues(true);
 			const getIssues = async () => {
 				setIsLoading(true);
 				try {
